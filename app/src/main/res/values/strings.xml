@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">sfu_interactive_map</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

@@ -1,0 +1,9 @@
+https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/45/query?f=json&text=Academic%20Quadrangle&returnGeometry=true&geometryType=esriGeometryEnvelope&inSR=4326&outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&outSR=4326
+
+
+Building 
+https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&returnGeometry=true&objectids=58&geometryType=esriGeometryEnvelope&inSR=4326&outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&outSR=4326
+
+
+All buildings
+https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/45/query?f=json&where=objectid%3E0&returnGeometry=true&geometryType=esriGeometryMultipoint&inSR=4326&outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&outSR=4326
