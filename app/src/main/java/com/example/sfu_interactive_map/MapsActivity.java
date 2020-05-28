@@ -2,6 +2,7 @@ package com.example.sfu_interactive_map;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,8 @@ import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
+
     private GoogleMap mMap;
     List<LatLng> latlng_points;
     List<List<LatLng>> paths;
@@ -40,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Polygon prevPolygon = null;
 
     final String url = "https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/45/query?f=json&text=Academic%20Quadrangle&returnGeometry=true&geometryType=esriGeometryEnvelope&inSR=4326&outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&outSR=4326";
-    final String url1 = "https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/45/query?f=json&where=objectid%3E0&returnGeometry=true&geometryType=esriGeometryMultipoint&inSR=4326&outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&outSR=4326";
+    final String url1 = "https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&returnGeometry=true&objectids=24&geometryType=esriGeometryEnvelope&inSR=4326&outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&outSR=4326";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         add_coord = findViewById(R.id.add_coord);
         delete_coord = findViewById(R.id.delete_coord);
+
+        String[] lol = getResources().getStringArray(R.array.AQ);
+
+        Log.d("first field: ", lol[1]);
 
         add_coord.setOnClickListener(new View.OnClickListener() {
             @Override

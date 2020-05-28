@@ -1,6 +1,7 @@
 package com.example.sfu_interactive_map;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Building {
@@ -16,45 +17,34 @@ public class Building {
     String abbr;
     //The building code (may not need to be used)
     String bld_code;
-    //Number of stories of building
-    int levels;
-    //What is special about this building
-    String bld_attrib;
-    //all rooms belonging to this bld
-    List<Room> rooms;
-    //all floors
-    List<Integer> all_levels;
+    //Building description
+    String bld_descr;
+    //all floors belonging to this bld
+    HashMap<Integer, Floor> floors;
     //http request for overview building
-    String url_overview;
-    //http request for all rooms belonging to this building
-    String url_allrooms;
+    String url_building;
+
     public Building(){
         bld_name = "";
         abbr = "";
         bld_code = "";
-        levels = -1;
-        bld_attrib = "";
-        rooms = new ArrayList<>();
-        all_levels = new ArrayList<>();
-        url_overview = "";
-        url_allrooms = "";
+        bld_descr = "";
+        floors = null;
+        url_building = "";
     }
     public Building(
             String bld_name,
             String abbr,
             String bld_code,
-            int levels,
-            String bld_attrib,
-            List<Room> rooms,
-            List<Integer> all_levels,
-            String url_overview,
-            String url_allrooms
+            String bld_descr,
+            String url_building
             )
     {
         this.bld_name = bld_name;
         this.abbr = abbr;
         this.bld_code = bld_code;
-        this.levels = levels;
-
+        this.bld_descr = bld_descr;
+        this.url_building = url_building;
+        this.floors = new HashMap<Integer, Floor>();
     }
 }
