@@ -218,8 +218,10 @@
     </string-array>
 
     <string-array name="CSTN">
-        <item name="hasfloor">false</item>
+        <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=73&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
+        <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=CORNERSTONE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
+        <item name ="CSTN_L1">64</item>
     </string-array>
 
     <string-array name="ASB">
