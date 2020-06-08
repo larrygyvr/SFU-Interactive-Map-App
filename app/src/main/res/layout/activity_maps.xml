@@ -1,41 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:fitsSystemWindows="true">
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
-
-    <Button
-        android:id="@+id/add_coord"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#359c5e"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:padding="8dp"
-        android:layout_margin="5dp"
-        android:textColor="#ffffff"
-        android:text="add coord"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/description"
+        app:itemTextAppearance="@style/menuItemTextAppearance"/>
+</androidx.drawerlayout.widget.DrawerLayout>
 
-    <Button
-        android:id="@+id/delete_coord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#359c5e"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:padding="8dp"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="60dp"
-        android:textColor="#ffffff"
-        android:text="delete_coord"/>
 
-</RelativeLayout>
+
+

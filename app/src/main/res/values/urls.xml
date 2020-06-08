@@ -9,26 +9,24 @@
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=24&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=Lorne%20Davies%20Complex&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="LDC_L1">25</item>
-        <item name ="LDC_L2">29</item>
-        <item name ="LDC_L3">33</item>
-        <item name ="LDC_L4">37</item>
-        <item name ="LDC_L5">41</item>
-        <item name ="LDC_L6">45</item>
+        <item name ="1">1_25</item>
+        <item name ="2">2_29</item>
+        <item name ="3">3_33</item>
+        <item name ="4">4_37</item>
+        <item name ="5">5_41</item>
+        <item name ="6">6_45</item>
     </string-array>
 
     <string-array name="WMC">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=60&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=W%20A%20C%20BENNETT%20LIBRARY&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="WMC_L1">29</item>
-        <item name ="WMC_L2">33</item>
-        <item name ="WMC_L3">37</item>
-        <item name ="WMC_L4">41</item>
-        <item name ="WMC_L5">45</item>
-        <item name ="WMC_L6">49</item>
-        <item name ="WMC_L7">53</item>
-        <item name ="WMC_L8">57</item>
+        <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=WEST%20MALL&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
+        <item name ="1">1_29</item>
+        <item name ="2">2_33</item>
+        <item name ="3">3_37</item>
+        <item name ="4">4_41</item>
+        <item name ="5">5_45</item>
+        <item name ="6">6_49</item>
     </string-array>
 
     <string-array name="GAS">
@@ -40,22 +38,22 @@
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=55&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=TRANSPORTATION%20CENTRE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="TC_L1">29</item>
-        <item name ="TC_L2">41</item>
+        <item name ="1">1_29</item>
+        <item name ="2">2_41</item>
     </string-array>
 
     <string-array name="LIB">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=58&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=W%20A%20C%20BENNETT%20LIBRARY&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="LIB_L1">29</item>
-        <item name ="LIB_L2">33</item>
-        <item name ="LIB_L3">37</item>
-        <item name ="LIB_L4">41</item>
-        <item name ="LIB_L5">45</item>
-        <item name ="LIB_L6">49</item>
-        <item name ="LIB_L7">53</item>
-        <item name ="LIB_L8">57</item>
+        <item name ="1">1_29</item>
+        <item name ="2">2_33</item>
+        <item name ="3">3_37</item>
+        <item name ="4">4_41</item>
+        <item name ="5">5_45</item>
+        <item name ="6">6_49</item>
+        <item name ="7">7_53</item>
+        <item name ="8">8_57</item>
     </string-array>
 
     <string-array name="CML">
@@ -67,135 +65,135 @@
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=25&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=MAGGIE%20BENSTON&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="MBC_L1">29</item>
-        <item name ="MBC_L2">33</item>
-        <item name ="MBC_L3">37</item>
-        <item name ="MBC_L4">41</item>
-        <item name ="MBC_L5">45</item>
+        <item name ="1">1_29</item>
+        <item name ="2">2_33</item>
+        <item name ="3">3_37</item>
+        <item name ="4">4_41</item>
+        <item name ="5">5_45</item>
     </string-array>
 
     <string-array name="DFA">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=56&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;where=bl_name%20LIKE%20%27Leslie%%27&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="DFA_L1">37</item>
-        <item name ="DFA_L2">41</item>
+        <item name ="1">1_37</item>
+        <item name ="2">2_41</item>
     </string-array>
 
     <string-array name="HC">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=23&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=Halpern%20Centre&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="HC_L1">37</item>
+        <item name ="1">1_37</item>
     </string-array>
 
     <string-array name="DAC">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=12&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=DIAMOND%20UNIVERSITY%20CENTRE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="DAC_L1">29</item>
-        <item name ="DAC_L2">33</item>
+        <item name ="1">1_29</item>
+        <item name ="2">2_33</item>
     </string-array>
 
     <string-array name="RCB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=42&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=ROBERT%20C%20BROWN%20HALL&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="RCB_L1">33</item>
-        <item name ="RCB_L2">37</item>
-        <item name ="RCB_L3">41</item>
-        <item name ="RCB_L4">45</item>
+        <item name ="1">1_33</item>
+        <item name ="2">2_37</item>
+        <item name ="3">3_41</item>
+        <item name ="4">4_45</item>
     </string-array>
 
     <string-array name="EDB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=15&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=EDUCATION%20BUILDING&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="EDB_L1">41</item>
-        <item name ="EDB_L2">45</item>
-        <item name ="EDB_L3">49</item>
+        <item name ="1">1_41</item>
+        <item name ="2">2_45</item>
+        <item name ="3">3_49</item>
     </string-array>
 
     <string-array name="AQ">
         <item name="hasfloors">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=1&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=Academic%20Quadrangle&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="AQ_L1">37</item>
-        <item name ="AQ_L2">41</item>
-        <item name ="AQ_L3">45</item>
-        <item name ="AQ_L4">49</item>
-        <item name ="AQ_L5">57</item>
-        <item name ="AQ_L6">61</item>
+        <item name ="floor_url">"https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=Academic%20Quadrangle&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326"</item>
+        <item name ="1">1_37</item>
+        <item name ="2">2_41</item>
+        <item name ="3">3_45</item>
+        <item name ="4">4_49</item>
+        <item name ="5">5_57</item>
+        <item name ="6">6_61</item>
     </string-array>
 
     <string-array name="ECC">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=63&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=EAST%20CONCOURSE%20CAFETERIA&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="ECC_L1">45</item>
+        <item name ="1">1_45</item>
     </string-array>
 
     <string-array name="ETA">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=64&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=EAST%20THEATRE%20ANNEX&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="ETA_L1">45</item>
+        <item name ="1">1_45</item>
     </string-array>
 
     <string-array name="SC">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=46&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=SHRUM%20SCIENCE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SC_L1">33</item>
-        <item name ="SC_L2">37</item>
-        <item name ="SC_L3">41</item>
-        <item name ="SC_L4">45</item>
-        <item name ="SC_L5">49</item>
+        <item name ="1">1_33</item>
+        <item name ="2">2_37</item>
+        <item name ="3">3_41</item>
+        <item name ="4">4_45</item>
+        <item name ="5">5_49</item>
     </string-array>
 
     <string-array name="SSB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=48&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=SOUTH%20SCIENCE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SSB_L1">33</item>
-        <item name ="SSB_L2">37</item>
-        <item name ="SSB_L3">41</item>
+        <item name ="1">1_33</item>
+        <item name ="2">2_37</item>
+        <item name ="3">3_41</item>
     </string-array>
 
     <string-array name="TASC2">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=51&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=TASC%202&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="TASC2_L1">33</item>
-        <item name ="TASC2_L2">37</item>
-        <item name ="TASC2_L3">41</item>
-        <item name ="TASC2_L4">45</item>
+        <item name ="1">1_33</item>
+        <item name ="2">2_37</item>
+        <item name ="3">3_41</item>
+        <item name ="4">4_45</item>
     </string-array>
 
     <string-array name="SWH">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=43&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=SAYWELL%20HALL&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SWH_L1">45</item>
-        <item name ="SWH_L2">49</item>
+        <item name ="1">1_45</item>
+        <item name ="2">2_49</item>
     </string-array>
 
     <string-array name="BLU">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=6&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=BLUSSON%20HALL&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="BLU_L1">45</item>
-        <item name ="BLU_L2">49</item>
-        <item name ="BLU_L3">53</item>
+        <item name ="1">1_45</item>
+        <item name ="2">2_49</item>
+        <item name ="3">3_53</item>
     </string-array>
 
     <string-array name="SH">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=49&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=STRAND%20HALL&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SH_L1">49</item>
-        <item name ="SH_L2">53</item>
-        <item name ="SH_L3">57</item>
+        <item name ="1">1_49</item>
+        <item name ="2">2_53</item>
+        <item name ="3">3_57</item>
     </string-array>
 
     <string-array name="TO">
@@ -207,47 +205,79 @@
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=50&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=STRAND%20HALL%20ANNEX&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SHA_L1">53</item>
+        <item name ="1">1_53</item>
     </string-array>
 
     <string-array name="TLB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=54&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=TRANSIT%20LOOP%20BUILDING&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="TLB_L1">53</item>
+        <item name ="1">1_53</item>
     </string-array>
 
     <string-array name="CSTN">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=73&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=CORNERSTONE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="CSTN_L1">64</item>
+        <item name ="1">1_64</item>
     </string-array>
 
     <string-array name="ASB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=4&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=APPLIED%20SCIENCE&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="ASB_L1">41</item>
-        <item name ="ASB_L2">45</item>
-        <item name ="ASB_L3">49</item>
+        <item name ="1">1_41</item>
+        <item name ="2">2_45</item>
+        <item name ="3">3_49</item>
     </string-array>
 
     <string-array name="SECB">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=47&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=SOUTH%20EAST%20CLASSROOM%20BLOCK&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="SECB_L1">64</item>
+        <item name ="1">1_64</item>
     </string-array>
 
     <string-array name="TASC1">
         <item name="hasfloor">true</item>
         <item name ="building_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/1/query?f=json&amp;returnGeometry=true&amp;objectids=52&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=Building%2CAbbr%2Cbl_id%2COBJECTID&amp;outSR=4326</item>
         <item name ="floor_url">https://at-web27.its.sfu.ca/fsgis/rest/services/Vertisee/Vertisee_BuildingFloorplan_P/MapServer/%1$s/query?f=json&amp;text=TASC1&amp;returnGeometry=true&amp;geometryType=esriGeometryEnvelope&amp;inSR=4326&amp;outFields=bl_name%2Crm_grp%2Crm_type%2Crm_id%2COBJECTID&amp;outSR=4326</item>
-        <item name ="">37</item>
-        <item name ="">41</item>
-        <item name ="">45</item>
+        <item name ="1">1_37</item>
+        <item name ="2">2_41</item>
+        <item name ="3">3_45</item>
     </string-array>
 
+
+    <array name="campus">
+        <item>@array/AQ</item>
+        <item>@array/ASB</item>
+        <item>@array/BLU</item>
+        <item>@array/CML</item>
+        <item>@array/CSTN</item>
+        <item>@array/DAC</item>
+        <item>@array/DFA</item>
+        <item>@array/ECC</item>
+        <item>@array/EDB</item>
+        <item>@array/ETA</item>
+        <item>@array/GAS</item>
+        <item>@array/HC</item>
+        <item>@array/LDC</item>
+        <item>@array/LIB</item>
+        <item>@array/MBC</item>
+        <item>@array/RCB</item>
+        <item>@array/SC</item>
+        <item>@array/SECB</item>
+        <item>@array/SH</item>
+        <item>@array/SHA</item>
+        <item>@array/SSB</item>
+        <item>@array/SWH</item>
+        <item>@array/TASC1</item>
+        <item>@array/TASC2</item>
+        <item>@array/TC</item>
+        <item>@array/TLB</item>
+        <item>@array/TO</item>
+        <item>@array/VP</item>
+        <item>@array/WMC</item>
+    </array>
 
 </resources>

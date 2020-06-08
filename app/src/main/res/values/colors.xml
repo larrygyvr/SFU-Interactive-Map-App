@@ -3,4 +3,36 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <string-array name="polygoncolors">
+        <item name="AQ" >#ffaa00</item> 
+        <item name="ASB" >#00e6a9</item> 
+        <item name="BLU" >#e64c00</item> 
+        <item name="CML" >#ff0000</item>
+        <item name="CSTN" >#ff00c5</item> 
+        <item name="DAC" >#828282</item>
+        <item name="DFA" >#e6e600</item> 
+        <item name="ECC" >#005ce6</item> 
+        <item name="EDB" >#a80000</item> 
+        <item name="ETA" >#00c5ff</item> 
+        <item name="GAS" >#002673</item> 
+        <item name="HC" >#ff5500</item> 
+        <item name="LDC" >#407db3</item> 
+        <item name="LIB" >#c500ff</item> 
+        <item name="MBC" >#00a884</item> 
+        <item name="RCB" >#d7b09e</item> 
+        <item name="SC" >#033e76</item>
+        <item name="SECB" >#f0b337</item> 
+        <item name="SH" >#8b4513</item>
+        <item name="SHA" >#737300</item> 
+        <item name="SSB" >#a3ff73</item> 
+        <item name="SWH" >#8400a8</item> 
+        <item name="TASC1" >#ea5e5e</item> 
+        <item name="TASC2" >#0ed2d1</item> 
+        <item name="TC" >#7887a7</item> 
+        <item name="TLB" >#e9b713</item> 
+        <item name="TO" >#2b1815</item> 
+        <item name="VP" >#b76c42</item> 
+        <item name="WMC" >#263515</item> 
+    </string-array>
 </resources>
