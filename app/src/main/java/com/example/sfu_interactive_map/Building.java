@@ -2,6 +2,7 @@ package com.example.sfu_interactive_map;
 
 
 import android.graphics.Color;
+import android.os.Build;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -19,8 +20,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Building {
+import ir.mirrajabi.searchdialog.core.Searchable;
 
+public class Building implements Searchable {
+
+    //is visible and clickable
+    private static boolean isVisClick;
+    //list of all buildings
     private static List<Building> buildings;
     //Full name of building
     private String bld_name;
@@ -30,8 +36,10 @@ public class Building {
     private String bld_code;
     //Building description
     private String bld_descr;
-    //all floors belonging to this bld
-    private SparseArray<Floor> floors;
+    //all floors belonging to this bld sparse array
+    private SparseArray<Floor> floorsSparseArr;
+    //all floors belonging to this bld list
+    private List<Floor> floorsList;
     //http request for overview building
     private String bld_url;
     //rings that belong to this building
@@ -48,7 +56,8 @@ public class Building {
         this.abbr = "";
         this.bld_code = "";
         this.bld_descr = "";
-        this.floors =  new SparseArray<Floor>();
+        this.floorsSparseArr =  new SparseArray<Floor>();
+        this.floorsList = new ArrayList<Floor>();
         this.bld_url = url;
         this.rings = new ArrayList<List<LatLng>>();
         this.polygons = new ArrayList<Polygon>();
@@ -57,6 +66,7 @@ public class Building {
     }
 
     //get methods
+    public static boolean getIsVisClick(){return Building.isVisClick;}
     public String getBld_name(){
         return this.bld_name;
     }
@@ -69,9 +79,10 @@ public class Building {
     public String getBld_descr(){
         return this.bld_descr;
     }
-    public SparseArray<Floor> getFloors(){
-        return this.floors;
+    public SparseArray<Floor> getFloorsSparseArr(){
+        return this.floorsSparseArr;
     }
+    public List<Floor> getFloorsList(){return this.floorsList;}
     public String getBld_url(){
         return this.bld_url;
     }
@@ -89,6 +100,10 @@ public class Building {
     }
 
     //set methods
+    public static void setIsVisClick(boolean isVisClick){
+        Building.isVisClick = isVisClick;
+    }
+
     public void setBld_name(String bld_name){
         this.bld_name = bld_name;
     }
@@ -106,8 +121,9 @@ public class Building {
     }
 
     public void addFloors(Floor floor) {
-        if(this.floors != null){
-            this.floors.append(floor.getLevel(), floor);
+        if(this.floorsSparseArr != null){
+            this.floorsSparseArr.append(floor.getLevel(), floor);
+            this.floorsList.add(floor);
         }
     }
 
@@ -122,6 +138,7 @@ public class Building {
     public static void addBuilding(Building building){
         if(Building.buildings == null){
             Building.buildings = new ArrayList<Building>();
+            Building.setIsVisClick(true);
         }
         Building.buildings.add(building);
     }
@@ -165,6 +182,19 @@ public class Building {
     }
 
     //methods
+    public static void allBuildingsInteract(boolean isVisClick){
+        List<Building> blds = Building.getBuildings();
+        if(blds!= null && !blds.isEmpty()){
+            for(Building bld : blds){
+                List<Polygon> ps = bld.getPolygons();
+                for(Polygon p : ps){
+                    p.setVisible(isVisClick);
+                    p.setClickable(isVisClick);
+                }
+            }
+        }
+    }
+
     public void parseBldResponse(JSONObject response) throws JSONException {
         JSONArray features = response.getJSONArray("features");
         JSONObject attrib =  features.getJSONObject(0).getJSONObject("attributes");
@@ -184,4 +214,10 @@ public class Building {
             }
         }
     }
+
+    @Override
+    public String getTitle() {
+        return getBld_name();
+    }
+
 }

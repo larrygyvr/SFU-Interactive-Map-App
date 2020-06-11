@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.mirrajabi.searchdialog.core.Searchable;
+
 public class Floor {
     //level
     private int level;
@@ -82,14 +84,15 @@ public class Floor {
                     room.addPoint(point);
                 }
             }
+            room.setFloor(this);
             addRoom(room);
         }
 
     }
 
-    public void addFloorPolygons(String fillCol, String strokeCol, GoogleMap mMap){
+    public void addFloorPolygons(String fillCol, String strokeCol, GoogleMap mMap, boolean isVisClick){
         for(Room room : this.rooms){
-            room.addPolygon(fillCol, strokeCol, mMap);
+            room.addPolygon(fillCol, strokeCol, mMap, isVisClick);
         }
     }
 }

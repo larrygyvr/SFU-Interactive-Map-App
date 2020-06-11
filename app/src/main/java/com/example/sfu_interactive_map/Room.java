@@ -8,9 +8,12 @@ import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class Room{
+import ir.mirrajabi.searchdialog.core.Searchable;
+
+public class Room implements Searchable {
     //which group does room belong to
     private String bld_name;
     private String rm_grp;
@@ -18,6 +21,7 @@ public class Room{
     private String rm_id;
     private List<LatLng> ring;
     private Polygon polygon;
+    private Floor belongToFloor;
 
     Room(){
         this.bld_name = "";
@@ -25,6 +29,7 @@ public class Room{
         this.rm_type = "";
         this.rm_id = "";
         this.ring = new ArrayList<LatLng>();
+        this.belongToFloor = null;
     }
 
     //get method
@@ -47,9 +52,11 @@ public class Room{
     public List<LatLng> getRing(){
         return this.ring;
     }
-
     public Polygon getPolygon() {
         return this.polygon;
+    }
+    public Floor getFloor(){
+        return this.belongToFloor;
     }
 
     //set method
@@ -73,17 +80,24 @@ public class Room{
         this.ring.add(point);
     }
 
-    public void addPolygon(String fillCol, String strokeCol, GoogleMap mMap){
+    public void addPolygon(String fillCol, String strokeCol, GoogleMap mMap, boolean isVisClick){
         if(this.ring != null){
              this.polygon = mMap.addPolygon(new PolygonOptions()
-                    .visible(true)
+                    .visible(isVisClick)
                     .addAll(ring)
-                    .clickable(true)
+                    .clickable(isVisClick)
                     .strokeWidth(3)
                     .fillColor(Color.parseColor(fillCol))
                     .strokeColor(Color.parseColor(strokeCol)));
         }
     }
 
+    public void setFloor(Floor floor){
+        this.belongToFloor = floor;
+    }
 
+    @Override
+    public String getTitle() {
+        return getRm_id();
+    }
 }

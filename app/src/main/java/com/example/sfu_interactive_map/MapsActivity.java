@@ -3,17 +3,20 @@ package com.example.sfu_interactive_map;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
-
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,11 +31,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.material.navigation.NavigationView;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
+import ir.mirrajabi.searchdialog.core.SearchResultListener;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -46,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Object currSelectedObj;
     private Floor prevFloor;
     private final float bldvisibilityzoomlevel = 19.0f;
+    private int numRequests = 0;
+    private ImageButton searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         dl = (DrawerLayout)findViewById(R.id.drawer_layout);
         nav_view = (NavigationView)findViewById(R.id.navigation);
         nav_menu = nav_view.getMenu();
-
+        searchBtn = (ImageButton)findViewById(R.id.searchBtn);
     }
 
     @Override
@@ -93,7 +102,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String[] str = campus_blds[i][j].split("_");
                     String url = baseUrl.replace("%1$s", str[1]);
                     bld.addFloors(new Floor(Integer.parseInt(str[0]), url));
-                    //Log.d("floor level", str[0]);
                 }
             }
             Building.addBuilding(bld);
@@ -129,6 +137,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         ta.recycle();
 
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startPrimSearchDialog();
+            }
+        });
+
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -148,64 +163,63 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnPolygonClickListener(new GoogleMap.OnPolygonClickListener() {
             @Override
             public void onPolygonClick(Polygon polygon) {
-                if(prevPolygon != null && prevPolygon != polygon){
-                    prevPolygon.setStrokeColor(prevStrokeCol);
-                    prevPolygon.setStrokeWidth(3);
-                }
-                prevPolygon = polygon;
-                prevStrokeCol = prevPolygon.getStrokeColor();
-                polygon.setStrokeColor(Color.GREEN);
-                polygon.setStrokeWidth(7);
+                switchPolygon(polygon);
                 zoomToPolygon(polygon, 200, 1000);
-                dl.openDrawer(Gravity.LEFT);
+                if(!dl.isDrawerOpen(Gravity.LEFT))
+                    dl.openDrawer(Gravity.LEFT);
                 currSelectedObj = polyObjMap.get(polygon);
                 setMenuItem(nav_menu, currSelectedObj);
+
             }
         });
 
         mMap.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
             @Override
             public void onCameraMoveStarted(int i) {
-                Log.d("zoomlevel is", ""+mMap.getCameraPosition().zoom);
-                List<Building> blds = Building.getBuildings();
-                for(Building bld :blds){
-                    List<Polygon> bldPolygons = bld.getPolygons();
-                    for(Polygon p : bldPolygons){
-                        if(mMap.getCameraPosition().zoom > bldvisibilityzoomlevel){
-                            p.setClickable(false);
-                            p.setVisible(false);
-                        }
-                        else{
-                            Log.d("hit here", ""+mMap.getCameraPosition().zoom);
-                            p.setClickable(true);
-                            p.setVisible(true);
-                        }
+                if(mMap.getCameraPosition().zoom > bldvisibilityzoomlevel){
+                    if(Building.getIsVisClick()){
+                        Building.setIsVisClick(false);
+                        Building.allBuildingsInteract(Building.getIsVisClick());
+                    }
+                }
+                else{
+                    if(!Building.getIsVisClick()){
+                        Building.setIsVisClick(true);
+                        Building.allBuildingsInteract(Building.getIsVisClick());
                     }
                 }
             }
         });
     }
 
+    private void switchPolygon(Polygon polygon){
+        if(prevPolygon != null && prevPolygon != polygon){
+            prevPolygon.setStrokeColor(prevStrokeCol);
+            prevPolygon.setStrokeWidth(3);
+        }
+        prevPolygon = polygon;
+        prevStrokeCol = prevPolygon.getStrokeColor();
+        polygon.setStrokeColor(Color.GREEN);
+        polygon.setStrokeWidth(7);
+    }
+
     private void getFloorFromBld(final Building bld, int level){
-        final Floor flr  = bld.getFloors().get(level);
+        final Floor flr  = bld.getFloorsSparseArr().get(level);
         if(flr != null ){
             if(flr.getRooms().isEmpty()){
                 makeRequest(flr.getFlr_url(), new VolleyCallback() {
                     @Override
                     public void onSuccessResponse(JSONObject response) throws JSONException {
                         flr.parseFloorResponse(response);
-                        flr.addFloorPolygons(bld.getFillCol(),bld.getStrokeCol(), mMap);
-                        //flr.showFloor();
-                        Log.d("floor size", ""+flr.getRooms().size());
+                        flr.addFloorPolygons(bld.getFillCol(),bld.getStrokeCol(), mMap, true);
                         List<Room> rooms = flr.getRooms();
                         for(Room room : rooms){
                             polyObjMap.put(room.getPolygon(), room);
-                            Log.d("room id is", room.getRm_id());
                         }
-                        dl.closeDrawer(Gravity.LEFT);
                         if(prevFloor != null && prevFloor != flr){
                             prevFloor.hideFloor();
                         }
+                        dl.closeDrawer(Gravity.LEFT);
                         prevFloor = flr;
                         zoomToPolygon(prevPolygon, 200, 1000);
                     }
@@ -224,7 +238,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 prevFloor = flr;
                 flr.showFloor();
             }
-
         }
         else{
             //handle no such floor
@@ -256,7 +269,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             show_floors.setTitle("Floors");
             SubMenu subMenu = show_floors.getSubMenu();
             for (int i = 0; i < subMenu.size(); i++) {
-                if (((Building) obj).getFloors().get(i + 1) == null) {
+                if (((Building) obj).getFloorsSparseArr().get(i + 1) == null) {
                     subMenu.getItem(i).setVisible(false);
                 } else {
                     subMenu.getItem(i).setVisible(true);
@@ -296,12 +309,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(campos), transms, null);
     }
 
-    //makes a polygon with given path and then draw it on the map
-    /*public Polygon addPolygonToMap(PolygonOptions polyopt){
-        Polygon p = mMap.addPolygon(polyopt);
-        return p;
-    }*/
-
     public interface  VolleyCallback{
         void onSuccessResponse(JSONObject response) throws JSONException;
         void onErrorResponse(VolleyError error) throws Exception;
@@ -332,4 +339,78 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         HttpRequest.getInstance(this.getApplicationContext()).addToRequestQueue(jsobjreq);
     }
 
+    public void startPrimSearchDialog() {
+        ArrayList<Building> blds = new ArrayList<Building>(Building.getBuildings());
+        new SearchDialogCompat<>(this, "Search for Room in Building...", "Academic Quadrangle", null,
+                blds, new SearchResultListener<Building>() {
+            @Override
+            public void onSelected(BaseSearchDialogCompat dialog, Building item, int position) {
+                switchPolygon(item.getPolygons().get(0));
+                currSelectedObj = item;
+                setMenuItem(nav_menu, currSelectedObj);
+                if(!dl.isDrawerOpen(Gravity.LEFT))
+                    dl.openDrawer(Gravity.LEFT);
+                zoomToPolygon(item.getPolygons().get(0), 200, 1000);
+                dialog.dismiss();
+                startSecSearchDialog(item);
+
+            }
+        }).show();
+    }
+
+    public void startSecSearchDialog(final Building bld){
+        final ArrayList<Room> rooms = new ArrayList<>();
+        numRequests = bld.getFloorsList().size();
+        if(!bld.getFloorsList().isEmpty()){
+            for(final Floor floor : bld.getFloorsList()){
+                if(floor.getRooms().isEmpty()){
+                    makeRequest(floor.getFlr_url(), new VolleyCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject response) throws JSONException {
+                            floor.parseFloorResponse(response);
+                            floor.addFloorPolygons(bld.getFillCol(),bld.getStrokeCol(), mMap, false);
+                            rooms.addAll(floor.getRooms());
+                            for(Room rm : floor.getRooms())
+                                polyObjMap.put(rm.getPolygon(), rm);
+                            if(--numRequests == 0)
+                                showSecSearchResults(rooms);
+                        }
+                        @Override
+                        public void onErrorResponse(VolleyError error) throws Exception {
+                            error.printStackTrace();
+                            --numRequests;
+                        }
+                    });
+                }
+                else{
+                    rooms.addAll(floor.getRooms());
+                    if(--numRequests == 0)
+                        showSecSearchResults(rooms);
+                }
+            }
+        }else{
+            Toast.makeText(this, "No floor plan for this building", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void showSecSearchResults(ArrayList<Room> rooms){
+        new SearchDialogCompat<>(this, "Search for Room ID/Num...", "Room #3181", null,
+                rooms, new SearchResultListener<Room>() {
+            @Override
+            public void onSelected(BaseSearchDialogCompat dialog, Room item, int position) {
+                switchPolygon(item.getPolygon());
+                if(prevFloor != null && prevFloor != item.getFloor())
+                    prevFloor.hideFloor();
+                prevFloor = item.getFloor();
+                prevFloor.showFloor();
+                currSelectedObj = item;
+                setMenuItem(nav_menu, currSelectedObj);
+                if(!dl.isDrawerOpen(Gravity.LEFT))
+                    dl.openDrawer(Gravity.LEFT);
+                zoomToPolygon(item.getPolygon(),200, 1000);
+                dialog.dismiss();
+            }
+        }).show();
+    }
 }

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.sfu_interactive_map"
         minSdkVersion 28
@@ -30,4 +30,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'androidx.navigation:navigation-runtime:2.2.2'
+    implementation 'com.github.mirrajabi:search-dialog:1.2.4'
 }
