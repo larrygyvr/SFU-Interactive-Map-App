@@ -2,13 +2,17 @@ package com.example.sfu_interactive_map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class HomePage extends AppCompatActivity {
     private ImageView[] images;
@@ -53,8 +57,12 @@ public class HomePage extends AppCompatActivity {
         findYourClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MapsActivity.class);
-                startActivity(intent);
+                if(isOnline()) {
+                    Intent intent = new Intent(view.getContext(), MapsActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Make sure Network is connected", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -112,5 +120,12 @@ public class HomePage extends AppCompatActivity {
         images[1].setImageResource(img_ind[1]);
 
         images[0].startAnimation(animationFadeOut);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 }

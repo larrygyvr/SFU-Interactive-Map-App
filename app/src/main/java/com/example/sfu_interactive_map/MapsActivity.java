@@ -1,12 +1,22 @@
 package com.example.sfu_interactive_map;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.text.LoginFilter;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
@@ -22,6 +32,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationAvailability;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,18 +48,30 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
-import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.material.navigation.NavigationView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.SearchResultListener;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private LocationCallback mLocationCallback;
+    private LocationRequest mLocationRequest;
+    private boolean mFirstLocationUpdate;
+
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private boolean mLocationPermissionGranted;
     private GoogleMap mMap;
     private DrawerLayout dl;
     private Menu nav_menu;
@@ -65,10 +94,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
-        dl = (DrawerLayout)findViewById(R.id.drawer_layout);
-        nav_view = (NavigationView)findViewById(R.id.navigation);
+        dl = (DrawerLayout) findViewById(R.id.drawer_layout);
+        nav_view = (NavigationView) findViewById(R.id.navigation);
         nav_menu = nav_view.getMenu();
-        searchBtn = (ImageButton)findViewById(R.id.searchBtn);
+        searchBtn = (ImageButton) findViewById(R.id.searchBtn);
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        mLocationRequest.setFastestInterval(5 * 1000); // 10 seconds update
+        mLocationPermissionGranted = false;
+        mFirstLocationUpdate = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mFirstLocationUpdate = true;
+        Log.d("Sleep state hit","device on Pause");
+        if (mFusedLocationProviderClient != null) {
+            mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
+        }
+
     }
 
     @Override
@@ -90,14 +136,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String[][] campus_blds = new String[ta.length()][];
         final String[] colorArr = res.getStringArray(R.array.polygoncolors);
 
-        for(int i = 0; i<ta.length(); i++){
+        for (int i = 0; i < ta.length(); i++) {
             int id = ta.getResourceId(i, 0);
-            campus_blds[i]= res.getStringArray(id);
+            campus_blds[i] = res.getStringArray(id);
             final Building bld = new Building(campus_blds[i][1]);
-            Log.d("hasFloor:" , campus_blds[i][0]);
-            if(Boolean.parseBoolean(campus_blds[i][0])){
+            Log.d("hasFloor:", campus_blds[i][0]);
+            if (Boolean.parseBoolean(campus_blds[i][0])) {
                 String baseUrl = campus_blds[i][2];
-                for(int j = 3; j<campus_blds[i].length; j++) {
+                for (int j = 3; j < campus_blds[i].length; j++) {
                     //for some reason String.format(x,y) doesn't work. Could be something with the escaping chars
                     String[] str = campus_blds[i][j].split("_");
                     String url = baseUrl.replace("%1$s", str[1]);
@@ -112,14 +158,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     try {
                         //logcat will truncates long responses...
                         bld.parseBldResponse(response);
-                        Log.d("building name" ,bld.getBld_name());
+                        Log.d("building name", bld.getBld_name());
                         List<List<LatLng>> ring = bld.getRings();
                         StringBuilder sb = new StringBuilder(colorArr[finalI]);
-                        sb.insert(1,"1A");
+                        sb.insert(1, "1A");
                         bld.setFillCol(sb.toString());
                         bld.setStrokeCol(colorArr[finalI]);
                         bld.addPolygons(mMap);
-                        for(Polygon p : bld.getPolygons()){
+                        for (Polygon p : bld.getPolygons()) {
                             polyObjMap.put(p, bld);
                         }
 
@@ -127,6 +173,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         e.printStackTrace();
                     }
                 }
+
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     //need to handle case for no internet
@@ -136,6 +183,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
         ta.recycle();
+
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                if (!locationResult.getLocations().isEmpty()) {
+                    Log.d("in location results" , "updating location");
+                    if(mFirstLocationUpdate){
+                        Location location = locationResult.getLastLocation();
+                        LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+                        LatLngBounds latLngBounds = getPolygonBounds(prevPolygon.getPoints());
+                        List<LatLng> fitPoints = new ArrayList<>();
+                        fitPoints.add(ll);
+                        fitPoints.add(latLngBounds.getCenter());
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(getPolygonBounds(fitPoints), 200), 1000, null);
+                        mFirstLocationUpdate = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onLocationAvailability(LocationAvailability locationAvailability) {
+                super.onLocationAvailability(locationAvailability);
+                if(!locationAvailability.isLocationAvailable()){
+                    Log.d("onLocationAvailability", "Location Service Disabled");
+                    if (mFusedLocationProviderClient != null) {
+                        mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
+                        mFirstLocationUpdate = true;
+                    }
+                }
+
+            }
+        };
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,14 +230,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                if(id == R.id.level1){getFloorFromBld((Building) currSelectedObj, 1);}
-                else if(id == R.id.level2){getFloorFromBld((Building) currSelectedObj, 2);}
-                else if(id == R.id.level3){getFloorFromBld((Building) currSelectedObj, 3);}
-                else if(id == R.id.level4){getFloorFromBld((Building) currSelectedObj, 4);}
-                else if(id == R.id.level5){getFloorFromBld((Building) currSelectedObj, 5);}
-                else if(id == R.id.level6){getFloorFromBld((Building) currSelectedObj, 6);}
-                else if(id == R.id.level7){getFloorFromBld((Building) currSelectedObj, 7);}
-                else if(id == R.id.level8){getFloorFromBld((Building) currSelectedObj, 8);}
+                if (id == R.id.level1) {
+                    getFloorFromBld((Building) currSelectedObj, 1);
+                } else if (id == R.id.level2) {
+                    getFloorFromBld((Building) currSelectedObj, 2);
+                } else if (id == R.id.level3) {
+                    getFloorFromBld((Building) currSelectedObj, 3);
+                } else if (id == R.id.level4) {
+                    getFloorFromBld((Building) currSelectedObj, 4);
+                } else if (id == R.id.level5) {
+                    getFloorFromBld((Building) currSelectedObj, 5);
+                } else if (id == R.id.level6) {
+                    getFloorFromBld((Building) currSelectedObj, 6);
+                } else if (id == R.id.level7) {
+                    getFloorFromBld((Building) currSelectedObj, 7);
+                } else if (id == R.id.level8) {
+                    getFloorFromBld((Building) currSelectedObj, 8);
+                } else if (id == R.id.Navigate) {
+                    getLocationPermission();
+                    mFirstLocationUpdate = true;
+                    getDeviceLocation();
+                }
                 return true;
             }
         });
@@ -164,8 +259,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onPolygonClick(Polygon polygon) {
                 switchPolygon(polygon);
-                zoomToPolygon(polygon, 200, 1000);
-                if(!dl.isDrawerOpen(Gravity.LEFT))
+                LatLngBounds llb = getPolygonBounds(polygon.getPoints());
+                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(llb, 200), 1000, null);
+                if (!dl.isDrawerOpen(Gravity.LEFT))
                     dl.openDrawer(Gravity.LEFT);
                 currSelectedObj = polyObjMap.get(polygon);
                 setMenuItem(nav_menu, currSelectedObj);
@@ -176,14 +272,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
             @Override
             public void onCameraMoveStarted(int i) {
-                if(mMap.getCameraPosition().zoom > bldvisibilityzoomlevel){
-                    if(Building.getIsVisClick()){
+                if (mMap.getCameraPosition().zoom > bldvisibilityzoomlevel) {
+                    if (Building.getIsVisClick()) {
                         Building.setIsVisClick(false);
                         Building.allBuildingsInteract(Building.getIsVisClick());
                     }
-                }
-                else{
-                    if(!Building.getIsVisClick()){
+                } else {
+                    if (!Building.getIsVisClick()) {
                         Building.setIsVisClick(true);
                         Building.allBuildingsInteract(Building.getIsVisClick());
                     }
@@ -192,8 +287,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    private void switchPolygon(Polygon polygon){
-        if(prevPolygon != null && prevPolygon != polygon){
+    private void switchPolygon(Polygon polygon) {
+        if (prevPolygon != null && prevPolygon != polygon) {
             prevPolygon.setStrokeColor(prevStrokeCol);
             prevPolygon.setStrokeWidth(3);
         }
@@ -203,48 +298,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         polygon.setStrokeWidth(7);
     }
 
-    private void getFloorFromBld(final Building bld, int level){
-        final Floor flr  = bld.getFloorsSparseArr().get(level);
-        if(flr != null ){
-            if(flr.getRooms().isEmpty()){
+    private void getFloorFromBld(final Building bld, int level) {
+        final Floor flr = bld.getFloorsSparseArr().get(level);
+        if (flr != null) {
+            if (flr.getRooms().isEmpty()) {
                 makeRequest(flr.getFlr_url(), new VolleyCallback() {
                     @Override
                     public void onSuccessResponse(JSONObject response) throws JSONException {
                         flr.parseFloorResponse(response);
-                        flr.addFloorPolygons(bld.getFillCol(),bld.getStrokeCol(), mMap, true);
+                        flr.addFloorPolygons(bld.getFillCol(), bld.getStrokeCol(), mMap, true);
                         List<Room> rooms = flr.getRooms();
-                        for(Room room : rooms){
+                        for (Room room : rooms) {
                             polyObjMap.put(room.getPolygon(), room);
                         }
-                        if(prevFloor != null && prevFloor != flr){
+                        if (prevFloor != null && prevFloor != flr) {
                             prevFloor.hideFloor();
                         }
                         dl.closeDrawer(Gravity.LEFT);
                         prevFloor = flr;
-                        zoomToPolygon(prevPolygon, 200, 1000);
+                        LatLngBounds llb = getPolygonBounds(prevPolygon.getPoints());
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(llb, 200), 1000, null);
                     }
+
                     @Override
                     public void onErrorResponse(VolleyError error) throws Exception {
                         //need to handle case for no internet
                         error.printStackTrace();
                     }
                 });
-            }
-            else{
+            } else {
                 //case where floor already exist
-                if(prevFloor != null && prevFloor != flr){
+                if (prevFloor != null && prevFloor != flr) {
                     prevFloor.hideFloor();
                 }
                 prevFloor = flr;
                 flr.showFloor();
             }
-        }
-        else{
+        } else {
             //handle no such floor
         }
     }
 
-    private void setMenuItem(Menu menu, Object obj){
+    private void setMenuItem(Menu menu, Object obj) {
         MenuItem bld_name = menu.findItem(R.id.Building);
         MenuItem abbr = menu.findItem(R.id.Abbr);
         MenuItem bld_code = menu.findItem(R.id.Bld_code);
@@ -254,7 +349,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MenuItem room_id = menu.findItem(R.id.Room_id);
         MenuItem navigate = menu.findItem(R.id.Navigate);
 
-        if(obj instanceof  Building) { //bad practice to use instanceof can be avoided with polymorphism
+        if (obj instanceof Building) { //bad practice to use instanceof can be avoided with polymorphism
             bld_name.setVisible(true);
             abbr.setVisible(true);
             bld_code.setVisible(true);
@@ -275,9 +370,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     subMenu.getItem(i).setVisible(true);
                 }
             }
-        }
-        else if(obj instanceof Room){ //bad practice to use instanceof but just use for now
-            Log.d("clicked on room polygon", ((Room)obj).getRm_id());
+        } else if (obj instanceof Room) { //bad practice to use instanceof but just use for now
+            Log.d("clicked on room polygon", ((Room) obj).getRm_id());
             bld_name.setVisible(true);
             abbr.setVisible(false);
             bld_code.setVisible(false);
@@ -286,22 +380,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             room_name.setVisible(true);
             room_id.setVisible(true);
             navigate.setVisible(true);
-            bld_name.setTitle(String.format("Building Name: %s",((Room) obj).getBld_name()));
-            room_class.setTitle(String.format("Room Class: %s",((Room) obj).getRm_grp()));
-            room_name.setTitle(String.format("Room Name: %s",((Room) obj).getRm_type()));
-            room_id.setTitle(String.format("Room ID: %s",((Room) obj).getRm_id()));
+            bld_name.setTitle(String.format("Building Name: %s", ((Room) obj).getBld_name()));
+            room_class.setTitle(String.format("Room Class: %s", ((Room) obj).getRm_grp()));
+            room_name.setTitle(String.format("Room Name: %s", ((Room) obj).getRm_type()));
+            room_id.setTitle(String.format("Room ID: %s", ((Room) obj).getRm_id()));
         }
     }
 
-    private void zoomToPolygon(final Polygon p, final int padding, final int transms) {
+    private LatLngBounds getPolygonBounds(final List<LatLng> points) {
         final LatLngBounds.Builder centerBuilder = LatLngBounds.builder();
-        for (LatLng point : p.getPoints()) {
+        for (LatLng point : points) {
             centerBuilder.include(point);
         }
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(centerBuilder.build(), padding), transms, null);
+        return centerBuilder.build();
     }
 
-    public void zoomToPosition(LatLng position, final float zoom, final int transms){
+    public void zoomToPosition(LatLng position, final float zoom, final int transms) {
         CameraPosition campos = new CameraPosition.Builder()
                 .target(position)
                 .zoom(zoom)
@@ -309,16 +403,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(campos), transms, null);
     }
 
-    public interface  VolleyCallback{
+    public interface VolleyCallback {
         void onSuccessResponse(JSONObject response) throws JSONException;
+
         void onErrorResponse(VolleyError error) throws Exception;
     }
 
-    public void makeRequest(String url, final VolleyCallback callback){
-        JsonObjectRequest jsobjreq = new  JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+    public void makeRequest(String url, final VolleyCallback callback) {
+        JsonObjectRequest jsobjreq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("Json response",response.toString());
+                Log.d("Json response", response.toString());
                 try {
                     callback.onSuccessResponse(response);
                 } catch (JSONException e) {
@@ -348,9 +443,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 switchPolygon(item.getPolygons().get(0));
                 currSelectedObj = item;
                 setMenuItem(nav_menu, currSelectedObj);
-                if(!dl.isDrawerOpen(Gravity.LEFT))
+                if (!dl.isDrawerOpen(Gravity.LEFT))
                     dl.openDrawer(Gravity.LEFT);
-                zoomToPolygon(item.getPolygons().get(0), 200, 1000);
+                LatLngBounds llb = getPolygonBounds(item.getPolygons().get(0).getPoints());
+                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(llb, 200), 1000, null);
                 dialog.dismiss();
                 startSecSearchDialog(item);
 
@@ -358,59 +454,91 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }).show();
     }
 
-    public void startSecSearchDialog(final Building bld){
+    public void startSecSearchDialog(final Building bld) {
         final ArrayList<Room> rooms = new ArrayList<>();
         numRequests = bld.getFloorsList().size();
-        if(!bld.getFloorsList().isEmpty()){
-            for(final Floor floor : bld.getFloorsList()){
-                if(floor.getRooms().isEmpty()){
+        if (!bld.getFloorsList().isEmpty()) {
+            for (final Floor floor : bld.getFloorsList()) {
+                if (floor.getRooms().isEmpty()) {
                     makeRequest(floor.getFlr_url(), new VolleyCallback() {
                         @Override
                         public void onSuccessResponse(JSONObject response) throws JSONException {
                             floor.parseFloorResponse(response);
-                            floor.addFloorPolygons(bld.getFillCol(),bld.getStrokeCol(), mMap, false);
+                            floor.addFloorPolygons(bld.getFillCol(), bld.getStrokeCol(), mMap, false);
                             rooms.addAll(floor.getRooms());
-                            for(Room rm : floor.getRooms())
+                            for (Room rm : floor.getRooms())
                                 polyObjMap.put(rm.getPolygon(), rm);
-                            if(--numRequests == 0)
+                            if (--numRequests == 0)
                                 showSecSearchResults(rooms);
                         }
+
                         @Override
                         public void onErrorResponse(VolleyError error) throws Exception {
                             error.printStackTrace();
                             --numRequests;
                         }
                     });
-                }
-                else{
+                } else {
                     rooms.addAll(floor.getRooms());
-                    if(--numRequests == 0)
+                    if (--numRequests == 0)
                         showSecSearchResults(rooms);
                 }
             }
-        }else{
+        } else {
             Toast.makeText(this, "No floor plan for this building", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void showSecSearchResults(ArrayList<Room> rooms){
+    public void showSecSearchResults(ArrayList<Room> rooms) {
         new SearchDialogCompat<>(this, "Search for Room ID/Num...", "Room #3181", null,
                 rooms, new SearchResultListener<Room>() {
             @Override
             public void onSelected(BaseSearchDialogCompat dialog, Room item, int position) {
                 switchPolygon(item.getPolygon());
-                if(prevFloor != null && prevFloor != item.getFloor())
+                if (prevFloor != null && prevFloor != item.getFloor())
                     prevFloor.hideFloor();
                 prevFloor = item.getFloor();
                 prevFloor.showFloor();
                 currSelectedObj = item;
                 setMenuItem(nav_menu, currSelectedObj);
-                if(!dl.isDrawerOpen(Gravity.LEFT))
+                if (!dl.isDrawerOpen(Gravity.LEFT))
                     dl.openDrawer(Gravity.LEFT);
-                zoomToPolygon(item.getPolygon(),200, 1000);
+                LatLngBounds llb = getPolygonBounds(item.getPolygon().getPoints());
+                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(llb, 200), 1000, null);
                 dialog.dismiss();
             }
         }).show();
+    }
+
+    private void getLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getDeviceLocation() {
+        if(!mLocationPermissionGranted)
+            return;
+        mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+        if(!mMap.isMyLocationEnabled())
+            mMap.setMyLocationEnabled(true);
     }
 }
