@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="70dp"
+    android:id="@+id/updateTitle"
+    android:layout_marginTop="150dp"
+    android:ems="10"
+    android:background="@drawable/custom_input"
+    android:drawableStart="@drawable/ic_baseline_label_24"
+    android:drawablePadding="12dp"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:hint="Update Title"
+    android:inputType="textCapCharacters"
+    android:textSize="14sp">
+</EditText>

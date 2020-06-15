@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true">
 
     <FrameLayout
+        android:id="@+id/flayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <fragment
@@ -15,18 +16,38 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MapsActivity" >
-        </fragment>
+            tools:context=".MapsActivity" />
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/searchBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="50dp"
             android:layout_gravity="end"
             android:src="@drawable/search_btn"/>
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/marker"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:visibility="invisible"
+            android:background="@android:color/transparent">
+            <ImageView
+                android:id="@+id/markerImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/custom_marker"/>
 
+            <ImageView
+                android:id="@+id/embeddedImage"
+                android:layout_width="37dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/add_image" />
+        </FrameLayout>
+
+    </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
@@ -37,6 +58,8 @@
         app:menu="@menu/description"
         app:itemTextAppearance="@style/menuItemTextAppearance"/>
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
 
 
 

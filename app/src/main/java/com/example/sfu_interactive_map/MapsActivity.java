@@ -1,6 +1,7 @@
 package com.example.sfu_interactive_map;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -8,23 +9,53 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.ExifInterface;
+import android.media.Image;
+import android.media.tv.TvContract;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.text.LoginFilter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -43,23 +74,34 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.material.navigation.NavigationView;
+import com.google.protobuf.Internal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.zip.Inflater;
 
+import dagger.MapKey;
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.SearchResultListener;
 
@@ -71,8 +113,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean mFirstLocationUpdate;
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int PERMISSIONS_REQUEST_CODE_PICK_PHOTO = 2;
     private boolean mLocationPermissionGranted;
+    private boolean mGalleryPermissionGranted;
     private GoogleMap mMap;
+    private Marker currMarker;
     private DrawerLayout dl;
     private Menu nav_menu;
     private NavigationView nav_view;
@@ -83,11 +128,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Floor prevFloor;
     private final float bldvisibilityzoomlevel = 19.0f;
     private int numRequests = 0;
+    private Bitmap currBitmap;
     private ImageButton searchBtn;
+    private ImageView marker;
+    private ImageView addImage;
+    private RelativeLayout relayout;
+    private FrameLayout flayout;
+
+    private final String[] markerDialog = {
+            "Update Image", "Remove Marker"
+    };
+
+    private final String[] infoWindowDialog = {
+            "Update Title", "Update Description"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("onCreate state hit","device on create");
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -103,7 +162,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         mLocationRequest.setFastestInterval(5 * 1000); // 10 seconds update
         mLocationPermissionGranted = false;
+        mGalleryPermissionGranted = false;
         mFirstLocationUpdate = true;
+        marker = (ImageView)findViewById(R.id.markerImage);
+        addImage = (ImageView)findViewById(R.id.embeddedImage);
+        flayout = (FrameLayout) findViewById(R.id.marker);
+        currBitmap = null;
+        currMarker = null;
+
     }
 
     @Override
@@ -115,6 +181,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("onDestroy state hit","device on destory");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("onStop state hit","device on stop");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("onResume state hit","device on resume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("onRestart state hit","device on restart");
     }
 
     @Override
@@ -184,6 +274,135 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         ta.recycle();
 
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+                Log.d("onMarkerDragStart", "starting to move marker");
+                currMarker = marker;
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(final Marker marker) {
+                currMarker = marker;
+                AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                builder.setTitle("Marker Options");
+                builder.setItems(markerDialog, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if ("Update Image".equals(markerDialog[which])) {
+                            Toast.makeText(MapsActivity.this, "Update Image", Toast.LENGTH_SHORT).show();
+                            getGalleryPermission();
+                            Log.d("in Marker Clicker", "permission granted");
+
+                        } else if ("Remove Marker".equals(markerDialog[which])) {
+                            marker.remove();
+                            Toast.makeText(MapsActivity.this, "Removed Marker", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                alert.getWindow().setLayout(650,530);
+                return false;
+            }
+        });
+
+        //this enables display of multi line text in marker InFoWindow
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                Context context = getApplicationContext();
+                LinearLayout info = new LinearLayout(context);
+                info.setOrientation(LinearLayout.VERTICAL);
+                TextView title = new TextView(context);
+                title.setTextColor(Color.BLACK);
+                title.setGravity(Gravity.CENTER);
+                title.setTypeface(null, Typeface.BOLD);
+                title.setText(marker.getTitle());
+                TextView snippet = new TextView(context);
+                snippet.setTextColor(Color.GRAY);
+                snippet.setText(marker.getSnippet());
+                info.addView(title);
+                info.addView(snippet);
+                return info;
+            }
+        });
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                currMarker = marker;
+                final int layoutWidthChild = 500;
+                final int layoutHeighChild = 100;
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(layoutWidthChild,layoutHeighChild);
+                layoutParams.gravity = Gravity.CENTER;
+                layoutParams.setMargins(10,20,10,20);
+                LinearLayout linearLayout = new LinearLayout(MapsActivity.this);
+                final EditText editText1 = (EditText) getLayoutInflater().inflate(R.layout.edit_text1, null);
+                final EditText editText2 = (EditText) getLayoutInflater().inflate(R.layout.edit_text2, null);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.addView(editText1,layoutParams);
+                linearLayout.addView(editText2,layoutParams);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                builder.setTitle("Customize Notes");
+                builder.setView(linearLayout);
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(editText1.getText().length() != 0 && editText2.getText().length() != 0){
+                            currMarker.setTitle(editText1.getText().toString());
+                            currMarker.setSnippet(editText2.getText().toString());
+                        }else{
+                            Toast.makeText(MapsActivity.this, "Cannot Leave Empty Fields", Toast.LENGTH_SHORT).show();
+                        }
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                alert.getWindow().setLayout(
+                        (int)Math.floor(layoutWidthChild*1.5),
+                        (int)Math.floor(layoutHeighChild*6.5)
+                );
+            }
+        });
+
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                addImage.setBackground(getResources().getDrawable(R.drawable.add_image));
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title("Title")
+                        .snippet("Short Description")
+                        .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(flayout)))
+                        .draggable(true)
+                );
+            }
+        });
+
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -248,8 +467,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     getFloorFromBld((Building) currSelectedObj, 8);
                 } else if (id == R.id.Navigate) {
                     getLocationPermission();
-                    mFirstLocationUpdate = true;
-                    getDeviceLocation();
                 }
                 return true;
             }
@@ -513,22 +730,88 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void getLocationPermission() {
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
+            getDeviceLocation();
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+        mFirstLocationUpdate = true;
+    }
+
+    private void getGalleryPermission() {
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED) {
+            mGalleryPermissionGranted = true;
+            getImageFromGallery(currMarker);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_CODE_PICK_PHOTO);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION){
                 mLocationPermissionGranted = true;
+                getDeviceLocation();
+            }
+            else if (requestCode == PERMISSIONS_REQUEST_CODE_PICK_PHOTO){
+                Toast.makeText(this, "lol", Toast.LENGTH_SHORT).show();
+                mGalleryPermissionGranted = true;
+                getImageFromGallery(currMarker);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode != RESULT_CANCELED){
+            if (requestCode == PERMISSIONS_REQUEST_CODE_PICK_PHOTO) {
+                Toast.makeText(this, "Selecting image", Toast.LENGTH_SHORT).show();
+                //TO DO: handle if data == null
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                if (selectedImage != null) {
+                    Cursor cursor = getContentResolver().query(
+                            selectedImage,
+                            filePathColumn,
+                            null,
+                            null,
+                            null
+                    );
+                    if (cursor != null) {
+                        cursor.moveToFirst();
+                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                        String picturePath = cursor.getString(columnIndex);
+                        int ori = getExifOrientation(picturePath);
+                        currBitmap = BitmapFactory.decodeFile(picturePath);
+                        Matrix mat = new Matrix();
+                        mat.postRotate(ori);
+                        currBitmap = Bitmap.createBitmap(
+                                currBitmap,
+                                0,
+                                0,
+                                currBitmap.getWidth(),
+                                currBitmap.getHeight(),
+                                mat,
+                                true
+                        );
+                        currBitmap = Bitmap.createScaledBitmap(currBitmap, 1000, 1000,true);
+                        cursor.close();
+                        BitmapDrawable bd = new BitmapDrawable(getResources(), currBitmap);
+                        addImage.setBackground(bd);
+                        currMarker.setIcon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(flayout)));
+                    }
+                }
             }
         }
     }
@@ -540,5 +823,53 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
         if(!mMap.isMyLocationEnabled())
             mMap.setMyLocationEnabled(true);
+    }
+
+    public void getImageFromGallery(Marker marker){
+        if(!mGalleryPermissionGranted)
+            return;
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, PERMISSIONS_REQUEST_CODE_PICK_PHOTO);
+    }
+
+    public static Bitmap createDrawableFromView(View view ) {
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight() ,Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(returnedBitmap);
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null){
+            bgDrawable.draw(canvas);
+
+        }
+        else
+            canvas.drawColor(Color.WHITE);
+        view.draw(canvas);
+        return returnedBitmap;
+    }
+
+    public static int getExifOrientation(String filepath) {
+        int degree = 0;
+        ExifInterface exif = null;
+        try {
+            exif = new ExifInterface(filepath);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        if (exif != null) {
+            int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);
+            if (orientation != -1) {
+                switch (orientation) {
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                        degree = 90;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                        degree = 180;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                        degree = 270;
+                        break;
+                }
+            }
+        }
+        return degree;
     }
 }
