@@ -50,8 +50,10 @@ public class Building implements Searchable {
     private String fillCol;
     //polygon strokeColor
     private String strokeCol;
+    //bg image ID
+    private int backgroundImageID;
 
-    public Building(String url){
+    public Building(String url, int backgroundImageID){
         this.bld_name = "";
         this.abbr = "";
         this.bld_code = "";
@@ -63,6 +65,7 @@ public class Building implements Searchable {
         this.polygons = new ArrayList<Polygon>();
         this.fillCol = "";
         this.strokeCol = "";
+        this.backgroundImageID = backgroundImageID;
     }
 
     //get methods
@@ -97,6 +100,9 @@ public class Building implements Searchable {
     }
     public String getStrokeCol(){
         return this.strokeCol;
+    }
+    public int getBackgroundImageID() {
+        return this.backgroundImageID;
     }
 
     //set methods
@@ -179,6 +185,10 @@ public class Building implements Searchable {
 
     public void setStrokeCol(String strokeCol) {
         this.strokeCol = strokeCol;
+    }
+
+    public void setBackgroundImageID(int backgroundImageID) {
+        this.backgroundImageID = backgroundImageID;
     }
 
     //methods

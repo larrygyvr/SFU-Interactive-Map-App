@@ -65,6 +65,13 @@ public class HomePage extends AppCompatActivity {
                 }
             }
         });
+        notableLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Animation.AnimationListener animListener1 = new Animation.AnimationListener() {
             @Override

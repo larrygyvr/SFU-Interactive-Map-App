@@ -3,6 +3,17 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorAccentActive">#eab90f</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBackgroundPrimary">#ededed</color>
+    <color name="colorBackgroundSecondary">#efefef</color>
+    <color name="colorTextPrimary">#101010</color>
+    <color name="colorTextPrimaryDark">#000</color>
+    <color name="colorButtonNormal">#202227</color>
+    <color name="colorButtonActive">#2c364b</color>
+    <color name="colorButtonDisable">#585858</color>
+    <color name="colorBlack">#101010</color>
+    <color name="colorWhiteSmoke">#f7f7f7</color>
 
     <string-array name="polygoncolors">
         <item name="AQ" >#ffaa00</item> 

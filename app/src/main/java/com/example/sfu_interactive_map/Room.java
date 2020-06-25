@@ -22,14 +22,15 @@ public class Room implements Searchable {
     private List<LatLng> ring;
     private Polygon polygon;
     private Floor belongToFloor;
-
-    Room(){
+    private int backgroundImageID;
+    Room(int backgroundImageID){
         this.bld_name = "";
         this.rm_grp = "";
         this.rm_type = "";
         this.rm_id = "";
         this.ring = new ArrayList<LatLng>();
         this.belongToFloor = null;
+        this.backgroundImageID = backgroundImageID;
     }
 
     //get method
@@ -57,6 +58,10 @@ public class Room implements Searchable {
     }
     public Floor getFloor(){
         return this.belongToFloor;
+    }
+
+    public int getBackgroundImageID() {
+        return this.backgroundImageID;
     }
 
     //set method
@@ -94,6 +99,10 @@ public class Room implements Searchable {
 
     public void setFloor(Floor floor){
         this.belongToFloor = floor;
+    }
+
+    public void setBackgroundImageID(int backgroundImageID) {
+        this.backgroundImageID = backgroundImageID;
     }
 
     @Override

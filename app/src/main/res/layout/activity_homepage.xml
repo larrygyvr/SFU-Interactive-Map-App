@@ -33,9 +33,9 @@
     <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="260dp"
         android:scaleType="fitXY"
-        android:src="@drawable/home_page_banner"
+        android:src="@drawable/sfu_banner"
         android:alpha=".85"
 
         app:layout_constraintEnd_toEndOf="parent"

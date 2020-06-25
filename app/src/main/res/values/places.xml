@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- data is copied from SFU Snap Mobile App's "Dining Section". All credits to members associated with the development of SFU Snap Mobile -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <integer-array name="photo">
+        <item name="p1">@drawable/aandw</item>
+        <item name="p2">@drawable/bamboogarden</item>
+        <item name="p3">@drawable/bubbleworld</item>
+        <item name="p4">@drawable/bunandme</item>
+        <item name="p5">@drawable/chefhung</item>
+        <item name="p6">@drawable/clubilia</item>
+        <item name="p7">@drawable/diamondalumnicentre</item>
+        <item name="p8">@drawable/dininghallresidence</item>
+        <item name="p9">@drawable/discoverycafe</item>
+        <item name="p10">@drawable/donairtown</item>
+        <item name="p11">@drawable/gawonkorea</item>
+        <item name="p12">@drawable/highergrounds</item>
+        <item name="p13">@drawable/japarrito</item>
+        <item name="p14">@drawable/jugojuiceaq</item>
+        <item name="p15">@drawable/guadalupe</item>
+        <item name="p16">@drawable/mackenziecafe</item>
+        <item name="p17">@drawable/menchies</item>
+        <item name="p18">@drawable/minimart101</item>
+        <item name="p19">@drawable/nestermarket</item>
+        <item name="p20">@drawable/noodlewafflecafe</item>
+        <item name="p21">@drawable/pastapolo</item>
+        <item name="p22">@drawable/pho99</item>
+        <item name="p23">@drawable/pizzahut</item>
+        <item name="p24">@drawable/plumgardennoodle</item>
+        <item name="p25">@drawable/quesada</item>
+        <item name="p26">@drawable/renaissancecafeaq</item>
+        <item name="p27">@drawable/renaissancecafeappsci</item>
+        <item name="p28">@drawable/simoncstore</item>
+        <item name="p29">@drawable/thestudypublichouse</item>
+        <item name="p30">@drawable/starbuckscornerstone</item>
+        <item name="p31">@drawable/starbuckswestmall</item>
+        <item name="p32">@drawable/stevepokebar</item>
+        <item name="p33">@drawable/subwaycornerstone</item>
+        <item name="p34">@drawable/tacocantina</item>
+        <item name="p35">@drawable/thechoppedleaf</item>
+        <item name="p36">@drawable/timhorotons</item>
+        <item name="p37">@drawable/togosushi</item>
+        <item name="p38">@drawable/unclefatihpizza</item>
+    </integer-array>
+    <string-array name="p1">
+        <item name="placeName">A&amp;W</item>
+        <item name="description">Fast Food</item>
+        <item name="contact">(604) 299–2194</item>
+        <item name="address">9055 University High St, Burnaby, BC V5A 4X6</item>
+        <item name="Monday">Mon 7:30 AM - 11:00 PM</item>
+        <item name="Tuesday">Tue 7:30 AM - 11:00 PM</item>
+        <item name="Wednesday">Wed 7:30 AM - 11:00 PM</item>
+        <item name="Thursday">Thu 7:30 AM - 11:00 PM</item>
+        <item name="Friday">Fri 7:30 AM - 11:00 PM</item>
+        <item name="Saturday">Sat 8:00 AM - 11:00 PM</item>
+        <item name="Sunday">Sun 9:00 AM - 10:00 PM</item>
+    </string-array>
+
+    <string-array name="p2">
+        <item name="placeName">Bamboo Garden</item>
+        <item name="description">Chinese Dish</item>
+        <item name="contact">(604) 298–9869</item>
+        <item name="address">8911 Cornerstone Mews, Burnaby, BC V5A 4Y6</item>
+        <item name="Monday">Mon 10:00 AM - 9:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 9:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM - 9:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 9:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 9:00 PM</item>
+        <item name="Saturday">Closed</item>
+        <item name="Sunday">Closed</item>
+    </string-array>
+
+    <string-array name="p3">
+        <item name="placeName">Bubble World</item>
+        <item name="description">Bubble world is a Talwanese cuisine restaurant. We are
+absorbed in offering the best food service and Taiwanese food
+culture to all our quests. We offer Bubble teas of generally two
+distinct types: frult-flavored teas and milk teas. Come visit us
+and try one for yourself!</item>
+        <item name="contact">(778) 782–7010</item>
+        <item name="address">MBC Food Court</item>
+        <item name="Monday">Mon 10:30 AM - 5:00 PM</item>
+        <item name="Tuesday">Tue 10:30 AM - 5:00 PM</item>
+        <item name="Wednesday">Wed 10:30 AM - 5:00 PM</item>
+        <item name="Thursday">Thu 10:30 AM - 5:00 PM</item>
+        <item name="Friday">Fri 10:30 AM - 5:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p4">
+        <item name="placeName">Bun&amp;Me</item>
+        <item name="description">Vietnamese restaurant serving banh mi, rice plates, and
+Vietnamese drip coffee.</item>
+        <item name="contact">(604) 423–4688</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p5">
+        <item name="placeName">Chef Hung Taiwanese Beef Noodle</item>
+        <item name="description">Award-winning beef noodles</item>
+        <item name="contact">(604) 299–8548</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 9:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 9:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 9:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 9:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 9:00 PM</item>
+        <item name="Saturday">Sat 11:30 AM - 9:00 PM</item>
+        <item name="Sunday">Sun 11:30 AM - 9:00 PM</item>
+    </string-array>
+
+    <string-array name="p6">
+        <item name="placeName">Club Ilia Eatery &amp; Lounge</item>
+        <item name="description">SFU\'s top destination for lunch, dinner and drinks. Located on
+Burnaby Mountain in the award winning UniverCity community,
+Clud Ilia is a local favorite of students, staff, and neighbours
+alike.</item>
+        <item name="contact">(604) 568–4993</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 11:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 11:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 11:00 PM</item>
+        <item name="Thursday">Thu 17:00 AM - 17:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 77:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 11:00 PM</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p7">
+        <item name="placeName">Diamond Alumni Centre</item>
+        <item name="description">Perched atop Burnaby mountain with a beautiful panoramic view
+of Burrard Inlet and the North Shore mountains, Simon Fraser
+University\'s Diamond Alumni Centre Is a picture-perfect location
+to host a corporate retreat, professional or personal event, or to
+create lasting memories of your wedding day.
+The DAC lunch buffet is currently closed until Fall 2020.
+Faculty, staff, students and guests are welcome.
+Reservations are recommended.
+Please call 778-782-4794 to reserve your table today.</item>
+        <item name="contact">(778) 782–4794</item>
+        <item name="address">Diamond Alumni Centre</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p8">
+        <item name="placeName">Dining Hall by Residences</item>
+        <item name="description">Canada\'s first 24/7 Dining Hall. Students, faculty, staff and
+guests have the flexibility and convenience of 24-hour dining
+during Fall and Spring semesters. (Open 7:00 AM to 10:00 PM in
+the Summer semester)</item>
+        <item name="contact">(778) 782–7047</item>
+        <item name="address">Residences</item>
+        <item name="Monday">Mon 7:00 AM - 10:00 PM</item>
+        <item name="Tuesday">Tue 7:00 AM - 10:00 PM</item>
+        <item name="Wednesday">Wed 7:00 AM - 10:00 PM</item>
+        <item name="Thursday">Thu 7:00 AM - 10:00 PM</item>
+        <item name="Friday">Fri 7:00 AM - 10:00 PM</item>
+        <item name="Saturday">Sat 7:00 AM - 10:00 PM</item>
+        <item name="Sunday">Sun 7:00 AM - 10:00 PM</item>
+    </string-array>
+
+    <string-array name="p9">
+        <item name="placeName">Discovery Cafe</item>
+        <item name="description">Discovery Café offers International fare, traditional North
+American favourites, Starbucks fair trade coffee, and snacks.
+The venue features bubble tea and blended smoothies.</item>
+        <item name="contact">(778) 782–3409</item>
+        <item name="address">Discovery 1 Building</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p10">
+        <item name="placeName">Donair Town</item>
+        <item name="description">Donair &amp; Fresh Juices</item>
+        <item name="contact">(604) 298–8188</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 10:00 AM - 8:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 8:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM - 8:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 8:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 8:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p11">
+        <item name="placeName">Gawon Korean</item>
+        <item name="description">Korean Rice Bowls, Ramen, Snacks &amp; More</item>
+        <item name="contact">(778) 881–2464</item>
+        <item name="address">MBC Food Court</item>
+        <item name="Monday">Mon 10:30 PM - 6:00 PM</item>
+        <item name="Tuesday">Tue 10:30 PM - 6:00 PM</item>
+        <item name="Wednesday">Wed 10:30 PM - 6:00 PM</item>
+        <item name="Thursday">Thu 10:30 PM - 6:00 PM</item>
+        <item name="Friday">Fri 10:30 PM - 5:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p12">
+        <item name="placeName">Higher Grounds powered by Renaissance Coffee</item>
+        <item name="description">Located in the Maggie Benston Centre in Convocation Mall,
+the location offers Fair Trade Coffee and Espresso Beverages,
+baked goods and snacks, breakfast, sandwiches, soups and
+grilled paninis.</item>
+        <item name="contact">N/A</item>
+        <item name="address">Maggie Benston Centre</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p13">
+        <item name="placeName">Japarrito</item>
+        <item name="description">Japarrito: a fresh way to roll.
+Japanese burritos are different from traditional sushi. It is that
+does not offer any of wasabi or ginger. It may seem strange at
+first but each Japarrito is crafted with its homemade sauce and
+taste profile. You eat it with your hands like a burrito. Do not
+remove the paper wrapper completely. Just tear it off as you eat
+your way down. then, enjoy!</item>
+        <item name="contact">(604) 423–3139</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 8:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 8:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 8:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 8:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 8:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 7:00 PM</item>
+        <item name="Sunday">sun 17:00 AM - 5:30 PM</item>
+    </string-array>
+
+    <string-array name="p14">
+        <item name="placeName">Jugo Juice (AQ)</item>
+        <item name="description"> SFU Dining Services continues to increase the food variety and
+healthy options on campus with the opening of Jugo Juice,
+located alongside Renaissance Coffee in the AQ. Stop by fora
+made-to-order smoothie, fresh pressed juices, and grilled wraps
+and flatbreads.</item>
+        <item name="contact">N/A</item>
+        <item name="address">AQ Building 3000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p15">
+        <item name="placeName">Lone Star Tortilla Co. (formerly Guadalupe)</item>
+        <item name="description">Lone Star Tortilla Co. brings you our most loved Tex-Mex
+recipes, and combines them all into one in-house made, freshly
+pressed flour tortilla.</item>
+        <item name="contact">(778) 782–4996</item>
+        <item name="address">MBC Food Court</item>
+        <item name="Monday">Mon 11:00 AM - 7:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 7:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 7:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 7:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 4:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p16">
+        <item name="placeName">Mackenzie Café</item>
+        <item name="description">Mackenzie Cafe\'s menu includes fresh authentic global cuisine,
+hancrafted deli, all-day-breakfast, sushi made daily onsite, and
+cooked-to-order Asian stir fry.
+Featuring Vij\'s Inspired Indian Cuisine -
+Celebrity Chef Vikram Vi brings you the best of South Asian
+flavours using traditional Indian methods, spices and culinary
+influences - paired with local produce. From Butter Chicken to
+Maharaja Paneer, Vij\'s Indian Inspired Cuisine gives all Indian
+food lovers an opportunity to experience the taste of India.</item>
+        <item name="contact">(778) 782–4132</item>
+        <item name="address">AQ Building 3000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p17">
+        <item name="placeName">Menchie\'s</item>
+        <item name="description">Come in and build your own dessert! Choose from many flavours
+of frozen yogurt and sorbet, then top it all off with a wide
+selection of toppings and sauces.</item>
+        <item name="contact">N/A</item>
+        <item name="address">AQ Building 2000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p18">
+        <item name="placeName">Mini Mart 101</item>
+        <item name="description">Snacks, Drinks and Sundries</item>
+        <item name="contact">N/A</item>
+        <item name="address">Maggie Benston Centre</item>
+        <item name="Monday">Mon 9:00 AM - 6:00 PM</item>
+        <item name="Tuesday">Tue 9:00 AM - 6:00 PM</item>
+        <item name="Wednesday">Wed 9:00 AM - 6:00 PM</item>
+        <item name="Thursday">Thu 9:00 AM - 6:00 PM</item>
+        <item name="Friday">Fri 9:00 AM - 5:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p19">
+        <item name="placeName">Nesters Market</item>
+        <item name="description">Grocery Store, Pharmacy, and Postal Outlet</item>
+        <item name="contact">(604) 298–1522</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 8:00 AM - 9:00 PM</item>
+        <item name="Tuesday">Tue 8:00 AM - 9:00 PM</item>
+        <item name="Wednesday">Wed 8:00 AM - 9:00 PM</item>
+        <item name="Thursday">Thu 8:00 AM - 9:00 PM</item>
+        <item name="Friday">Fri 8:00 AM - 9:00 PM</item>
+        <item name="Saturday">Sat 8:00 AM - 9:00 PM</item>
+        <item name="Sunday">Sun 8:00 AM - 9:00 PM</item>
+    </string-array>
+
+    <string-array name="p20">
+        <item name="placeName">Noodle Waffle Café</item>
+        <item name="description">Soup noodles, original bubble waffles and drinks.</item>
+        <item name="contact">(778) 371–2376</item>
+        <item name="address">MBC Food Court</item>
+        <item name="Monday">Mon 11:00 AM - 6:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 6:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 6:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 6:00 PM</item>
+        <item name="Friday">Fri 71:00 AM - 5:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p21">
+        <item name="placeName">Pasta Polo Express</item>
+        <item name="description">Serving up quick pasta dishes and salads.</item>
+        <item name="contact">N/A</item>
+        <item name="address">MBC Food Court</item>
+        <item name="Monday">Mon 11:00 AM - 5:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 5:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 5:00 PM</item>
+        <item name="Thursday">Thu 17:00 AM - 5:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 4:00 PM</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p22">
+        <item name="placeName">Pho 99</item>
+        <item name="description">Serving Vietnamese-styled noodles with delicious broth</item>
+        <item name="contact">N/A</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 17:00 AM - 10:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 10:00 PM</item>
+        <item name="Wednesday">Wed 17:00 AM - 10:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 10:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 10:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 10:00 PM</item>
+        <item name="Sunday">Sun 11:00 AM - 10:00 PM</item>
+    </string-array>
+
+    <string-array name="p23">
+        <item name="placeName">Pizza Hut</item>
+        <item name="description">Pizza and sides</item>
+        <item name="contact">(604) 299–6446</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 10:00 AM - 17:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 11:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM-11:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 11:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 12:00 AM</item>
+        <item name="Saturday">Sat 10:00 AM - 12:00 AM</item>
+        <item name="Sunday">Sun 11:00 AM - 11:00 PM</item>
+    </string-array>
+
+    <string-array name="p24">
+        <item name="placeName">Plum Garden Noodle House</item>
+        <item name="description">Fresh, Homemade, Healtny Meals</item>
+        <item name="contact">(604) 299–9813</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 10:00 AM - 8:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 8:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM - 8:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 8:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 8:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 3:00 PM</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p25">
+        <item name="placeName">Quesada</item>
+        <item name="description">Burritos and tacos</item>
+        <item name="contact">(604) 559–9900</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 9:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 9:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 9:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 9:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 9:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 8:00 PM</item>
+        <item name="Sunday">Sun 11:00 AM - 8:00 PM</item>
+    </string-array>
+
+    <string-array name="p26">
+        <item name="placeName">Renaissance Café (AQ)</item>
+        <item name="description">Simon Fraser University\'s renowned coffee shop, Renaissance
+Coffee is not only a great place to get a good cup of coffee,
+but also a great place to receive a convenient and cost friendly
+eating and drinking experience. For a wholesome meal, some
+delectable desserts or just a little something to warm yourself
+and lift your spirits, come join us at any of our locations on
+Campus to receive service with a smile.</item>
+        <item name="contact">(778) 782–4455</item>
+        <item name="address">AQ Building 3000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p27">
+        <item name="placeName">Renaissance Café (Appl. Science)</item>
+        <item name="description">Simon Fraser University\'s renowned coffee shop, Renaissance
+Coffee is not only a great place to get a good cup of coffee,
+but also a great place to receive a convenient and cost friendly
+eating and drinking experience. For a wholesome meal, some
+delectable desserts or just a little something to warm yourself
+and lift your spirits, come join us at any of our locations on
+campus to receive service with a smile.</item>
+        <item name="contact">(778) 782–4455</item>
+        <item name="address">Applied Sciences Building 9000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p28">
+        <item name="placeName">Simon C\'s Convenience Store</item>
+        <item name="description">A convenience Store serving baked goods, Renaissance Coffee,
+fresh fruit, sandwiches, salads, snacks, ice-cream, beverages,
+groceries, and more.</item>
+        <item name="contact">N/A</item>
+        <item name="address">AQ Building 2000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p29">
+        <item name="placeName">The Study Public House</item>
+        <item name="description">Located at the heart of the Simon Fraser University Burnaby
+Campus, The Study Public House seats 320 along with an
+expansive patio with views from Burnaby Mountain. The newest
+vibrant social hub at Simon Fraser University. Your space to
+unwind and create memorable experiences, we come together
+to inspire inclusivity and foster lasting friendships for students,
+staff, faculty and our UniverCity community.
+Minors and students 18 years of age or younger are welcome
+every day until 8pm if accompanied by a parent or guardian.</item>
+        <item name="contact">(604) 336–9933</item>
+        <item name="address">Maggie Benston Centre</item>
+        <item name="Monday">Mon 11:00 AM - 12:00 AM</item>
+        <item name="Tuesday">Tue 11:00 AM - 12:00 AM</item>
+        <item name="Wednesday">Wed 11:00 AM - 12:00 AM</item>
+        <item name="Thursday">Thu 11:00 AM - 1:00 AM</item>
+        <item name="Friday">Fri 11:00 AM - 1:00 AM</item>
+        <item name="Saturday">sat 11:00 AM - 1:00 AM</item>
+        <item name="Sunday">sun 11:00 AM - 12:00 AM</item>
+    </string-array>
+
+    <string-array name="p30">
+        <item name="placeName">Starbucks Coffee (Cornerstone)</item>
+        <item name="description">This trendy, student space proudly serves Fair Trade Espresso
+and is loaded with community tables, WI-FI, and power for
+mobile devices, with comfy indoor and patio seating. The venue
+is open 7 days a week, Including holidays.</item>
+        <item name="contact">(778) 782–3362</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p31">
+        <item name="placeName">Starbucks Coffee (West Mall)</item>
+        <item name="description">This trendy, student space proudly serves Fair Trade Espresso
+and is loaded with community tables, Wi-Fi, and power for
+mobile devices, with comfy indoor and patio seating. The venue
+is open 7 days a week, including holidays.</item>
+        <item name="contact">(778) 782–9786</item>
+        <item name="address">West Mall Centre 3000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p32">
+        <item name="placeName">Steve\'s Poke Bar</item>
+        <item name="description">Burnaby\'s first Hawaiian Poke Bar looks forward to bringing the
+best Poke experience to Vancouverites.</item>
+        <item name="contact">(604) 559–7653</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 8:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 8:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 8:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 8:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 8:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 8:00 PM</item>
+        <item name="Sunday">Sun 11:00 AM - 8:00 PM</item>
+    </string-array>
+
+    <string-array name="p33">
+        <item name="placeName">Subway (Cornerstone)</item>
+        <item name="description">Submarine sandwiches and salads</item>
+        <item name="contact">(604) 205–5854</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 7:00 AM - 10:00 PM</item>
+        <item name="Tuesday">Tue 7:00 AM - 10:00 PM</item>
+        <item name="Wednesday">Wed 7:00 AM - 10:00 PM</item>
+        <item name="Thursday">Thu 7:00 AM - 10:00 PM</item>
+        <item name="Friday">Fri 7:00 AM - 10:00 PM</item>
+        <item name="Saturday">Sat 8:00 AM - 10:00 PM</item>
+        <item name="Sunday">Sun 8:00 AM - 10:00 PM</item>
+    </string-array>
+
+    <string-array name="p34">
+        <item name="placeName">Taco Cantina</item>
+        <item name="description">Taco Cantina is all about street tacos! We\'re creating spicy,
+authentic, vibrant and satisfying flavours while giving the ability
+to customize almost any dish with add-ons. From signature
+Street tacos to taco salads and Mexican street corn, we express
+a Mexican experience shared through each dish!</item>
+        <item name="contact">N/A</item>
+        <item name="address">AQ Building 2000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Closed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p35">
+        <item name="placeName">The Chopped Leaf</item>
+        <item name="description">Fast, fresh and healthy food delivered with exceptional
+timeliness for premium customer service.</item>
+        <item name="contact">(604) 620–2467</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 10:00 AM - 7:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 7:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM - 7:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 7:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 7:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 7:00 PM</item>
+        <item name="Sunday">Sun 17:00 AM - 7:00 PM</item>
+    </string-array>
+
+    <string-array name="p36">
+        <item name="placeName">Tim Hortons</item>
+        <item name="description">Tim Hortons is located in West Mall 2000 level. There is plenty
+of seating area and study spaces located at Tim Horicis as well
+as a lounge space one level apove.</item>
+        <item name="contact">(778) 782–5505</item>
+        <item name="address">West Mall Cenire 2000 Level</item>
+        <item name="Monday">Mon Closed</item>
+        <item name="Tuesday">Tue Ciosed</item>
+        <item name="Wednesday">Wed Closed</item>
+        <item name="Thursday">Thu Closed</item>
+        <item name="Friday">Fri Closed</item>
+        <item name="Saturday">Sat Closed</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p37">
+        <item name="placeName">Togo Sushi</item>
+        <item name="description">Sushi, specialty rolls, bento boxes and rice bowls</item>
+        <item name="contact">(604) 428–9120</item>
+        <item name="address">Cornerstone</item>
+        <item name="Monday">Mon 11:00 AM - 8:00 PM</item>
+        <item name="Tuesday">Tue 11:00 AM - 8:00 PM</item>
+        <item name="Wednesday">Wed 11:00 AM - 8:00 PM</item>
+        <item name="Thursday">Thu 11:00 AM - 8:00 PM</item>
+        <item name="Friday">Fri 11:00 AM - 8:00 PM</item>
+        <item name="Saturday">Sat 11:00 AM - 8:00 PM</item>
+        <item name="Sunday">Sun Closed</item>
+    </string-array>
+
+    <string-array name="p38">
+        <item name ="placeName">Uncle Fatih\'s Pizza</item>
+        <item name="description">Pizza</item>
+        <item name="contact"></item>
+        <item name="address">9055 University High St Unit 108, Burnaby, BC V5A 0A7</item>
+        <item name="Monday">Mon 10:00 AM - 11:00 PM</item>
+        <item name="Tuesday">Tue 10:00 AM - 11:00 PM</item>
+        <item name="Wednesday">Wed 10:00 AM - 11:00 PM</item>
+        <item name="Thursday">Thu 10:00 AM - 11:00 PM</item>
+        <item name="Friday">Fri 10:00 AM - 12:00 AM</item>
+        <item name="Saturday">Sat 10:00 AM - 12:00 AM</item>
+        <item name="Sunday">Sun 11:00 AM - 11:00 PM</item>
+    </string-array>
+
+    <array name="places">
+        <item>@array/p1</item>
+        <item>@array/p2</item>
+        <item>@array/p3</item>
+        <item>@array/p4</item>
+        <item>@array/p5</item>
+        <item>@array/p6</item>
+        <item>@array/p7</item>
+        <item>@array/p8</item>
+        <item>@array/p9</item>
+        <item>@array/p10</item>
+        <item>@array/p11</item>
+        <item>@array/p12</item>
+        <item>@array/p13</item>
+        <item>@array/p14</item>
+        <item>@array/p15</item>
+        <item>@array/p16</item>
+        <item>@array/p17</item>
+        <item>@array/p18</item>
+        <item>@array/p19</item>
+        <item>@array/p20</item>
+        <item>@array/p21</item>
+        <item>@array/p22</item>
+        <item>@array/p23</item>
+        <item>@array/p24</item>
+        <item>@array/p25</item>
+        <item>@array/p26</item>
+        <item>@array/p27</item>
+        <item>@array/p28</item>
+        <item>@array/p29</item>
+        <item>@array/p30</item>
+        <item>@array/p31</item>
+        <item>@array/p32</item>
+        <item>@array/p33</item>
+        <item>@array/p34</item>
+        <item>@array/p35</item>
+        <item>@array/p36</item>
+        <item>@array/p37</item>
+        <item>@array/p38</item>
+    </array>
+</resources>

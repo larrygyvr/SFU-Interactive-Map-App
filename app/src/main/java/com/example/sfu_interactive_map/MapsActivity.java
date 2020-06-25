@@ -222,14 +222,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         prevFloor = null;
         polyObjMap = new HashMap<Polygon, Object>();
         Resources res = getResources();
+        TypedArray bgimageArr = res.obtainTypedArray(R.array.buildingdimages);
         TypedArray ta = res.obtainTypedArray(R.array.campus);
         String[][] campus_blds = new String[ta.length()][];
         final String[] colorArr = res.getStringArray(R.array.polygoncolors);
-
         for (int i = 0; i < ta.length(); i++) {
             int id = ta.getResourceId(i, 0);
+            int bgimageID = bgimageArr.getResourceId(i, 0);
             campus_blds[i] = res.getStringArray(id);
-            final Building bld = new Building(campus_blds[i][1]);
+            final Building bld = new Building(campus_blds[i][1],bgimageID);
             Log.d("hasFloor:", campus_blds[i][0]);
             if (Boolean.parseBoolean(campus_blds[i][0])) {
                 String baseUrl = campus_blds[i][2];
@@ -237,7 +238,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //for some reason String.format(x,y) doesn't work. Could be something with the escaping chars
                     String[] str = campus_blds[i][j].split("_");
                     String url = baseUrl.replace("%1$s", str[1]);
-                    bld.addFloors(new Floor(Integer.parseInt(str[0]), url));
+                    bld.addFloors(new Floor(Integer.parseInt(str[0]), url, bld.getBackgroundImageID()));
                 }
             }
             Building.addBuilding(bld);
@@ -273,7 +274,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
         ta.recycle();
-
+        bgimageArr.recycle();
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
             public void onMarkerDragStart(Marker marker) {
@@ -565,7 +566,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MenuItem room_name = menu.findItem(R.id.Room);
         MenuItem room_id = menu.findItem(R.id.Room_id);
         MenuItem navigate = menu.findItem(R.id.Navigate);
-
+        View headerView = nav_view.getHeaderView(0);
+        Drawable drawable;
         if (obj instanceof Building) { //bad practice to use instanceof can be avoided with polymorphism
             bld_name.setVisible(true);
             abbr.setVisible(true);
@@ -575,6 +577,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             room_name.setVisible(false);
             room_id.setVisible(false);
             navigate.setVisible(true);
+            drawable = ContextCompat.getDrawable(this, ((Building)obj).getBackgroundImageID());
+            headerView.setBackground(drawable);
             bld_name.setTitle(String.format("Building Name: %s", ((Building) obj).getBld_name()));
             abbr.setTitle(String.format("Abbr: %s", ((Building) obj).getAbbr()));
             bld_code.setTitle(String.format("Building Code: %s", ((Building) obj).getBld_code()));

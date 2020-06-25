@@ -280,4 +280,37 @@
         <item>@array/WMC</item>
     </array>
 
+    <integer-array name="buildingdimages">
+        <item>@drawable/aq</item>
+        <item>@drawable/asb</item>
+        <item>@drawable/blu</item>
+        <item>@drawable/cml</item>
+        <item>@drawable/cstn</item>
+        <item>@drawable/dac</item>
+        <item>@drawable/dfa</item>
+        <item>@drawable/ecc</item>
+        <item>@drawable/edb</item>
+        <item>@drawable/eta</item>
+        <item>@drawable/gas</item>
+        <item>@drawable/hc</item>
+        <item>@drawable/ldc</item>
+        <item>@drawable/lib</item>
+        <item>@drawable/mbc</item>
+        <item>@drawable/rcb</item>
+        <item>@drawable/sc</item>
+        <item>@drawable/secb</item>
+        <item>@drawable/sh</item>
+        <item>@drawable/sha</item>
+        <item>@drawable/ssb</item>
+        <item>@drawable/swh</item>
+        <item>@drawable/tasc1</item>
+        <item>@drawable/tasc2</item>
+        <item>@drawable/tc</item>
+        <item>@drawable/tlb</item>
+        <item>@drawable/to</item>
+        <item>@drawable/vp</item>
+        <item>@drawable/wmc</item>
+
+    </integer-array>
+
 </resources>

@@ -19,12 +19,14 @@ public class Floor {
     private List<Room> rooms;
     //floor url
     private String flr_url;
+    private int backgroundImageID;
 
-    Floor(int level, String flr_url)
+    Floor(int level, String flr_url, int backgroundImageID )
     {
         this.level = level;
         rooms = new ArrayList<Room>();
         this.flr_url = flr_url;
+        this.backgroundImageID = backgroundImageID;
     }
 
     //get method
@@ -40,9 +42,17 @@ public class Floor {
         return this.flr_url;
     }
 
+    public int getBackgroundImageID() {
+        return this.backgroundImageID;
+    }
+
     //set method
     public void setLevel(int level){
         this.level = level;
+    }
+
+    public void setBackgroundImageID(int backgroundImageID) {
+        this.backgroundImageID = backgroundImageID;
     }
 
     public void addRoom(Room room){
@@ -70,7 +80,7 @@ public class Floor {
     public void parseFloorResponse(JSONObject response) throws JSONException {
         JSONArray features = response.getJSONArray("features");
         for(int i = 0; i<features.length(); i++){
-            Room room = new Room();
+            Room room = new Room(getBackgroundImageID());
             JSONObject attrib = features.getJSONObject(i).getJSONObject("attributes");
             room.setBld_name(attrib.getString("bl_name"));
             room.setRm_grp(attrib.getString("rm_grp"));
