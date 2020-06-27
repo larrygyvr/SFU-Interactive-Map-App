@@ -780,6 +780,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode != RESULT_CANCELED){
             if (requestCode == PERMISSIONS_REQUEST_CODE_PICK_PHOTO) {
+                if(data == null)
+                    return;
                 Toast.makeText(this, "Selecting image", Toast.LENGTH_SHORT).show();
                 //TO DO: handle if data == null
                 Uri selectedImage = data.getData();
