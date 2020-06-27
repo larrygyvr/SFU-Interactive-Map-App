@@ -10,6 +10,6 @@
 ![Screenshot_2020-06-27-12-01-32-141_com example sfu_interactive_map](https://user-images.githubusercontent.com/32232680/85930202-4e22b700-b86f-11ea-8e18-757654fc3911.jpg)
 
 # REFERENCES
-# Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to members associated with the development of SFU Snap Mobile
 
+Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to members associated with the development of SFU Snap Mobile
 Recycler List View Adapted from https://github.com/ismealdi/list-grid-view-android
