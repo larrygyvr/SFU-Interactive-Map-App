@@ -2,9 +2,11 @@
 A sfu interactive app developed for newcomers of SFU to learn more about the campus. It consists of a map view showing all of the well known buildings of the SFU burnaby campus. The user can search for a room on campus and choose to show his location relative to the room. He or she can also add in customizable markers and notes to annotate places of interest. Aside from the map view, another section of the app is dedicated to show the users all dining locations around the campus. Students can look for his/her favorite dishes and rate a restaurant based on different criterias.
 
 Short Demo of App:
+
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/32232680/85930172-056afe00-b86f-11ea-9b63-3415220c92d5.gif)
 
 HomePage fade in fade out design showing SFU buildings around campus:
+
 <img src="https://user-images.githubusercontent.com/32232680/85930192-43682200-b86f-11ea-8220-3c82b2c6e30c.jpg" width="250"/>
 
 <img src="https://user-images.githubusercontent.com/32232680/85930194-46fba900-b86f-11ea-9252-f7a4a1c2a815.jpg" width="250"/>
@@ -26,5 +28,3 @@ HomePage fade in fade out design showing SFU buildings around campus:
 Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to members associated with the development of SFU Snap Mobile
 Recycler List View Adapted from https://github.com/ismealdi/list-grid-view-android
 MapView Search Dialog Adapted from https://github.com/mirrajabi/search-dialog
-
-<img src="https://user-images.githubusercontent.com/32232680/85932070-e031bc00-b87d-11ea-8cff-758fb8565a31.jpg" width="250"/>
