@@ -1,4 +1,4 @@
-# sfu_interactive_map
+# sfu interactive map
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/32232680/85930172-056afe00-b86f-11ea-9b63-3415220c92d5.gif)
 ![Screenshot_2020-06-26-15-11-48-776_com example sfu_interactive_map](https://user-images.githubusercontent.com/32232680/85930192-43682200-b86f-11ea-8220-3c82b2c6e30c.jpg)
 ![Screenshot_2020-06-26-15-11-59-387_com example sfu_interactive_map](https://user-images.githubusercontent.com/32232680/85930194-46fba900-b86f-11ea-9252-f7a4a1c2a815.jpg)
