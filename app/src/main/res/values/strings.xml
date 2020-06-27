@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sfu_interactive_map</string>
+    <string name="app_name">SFU Map</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="app_name_main">Directory of President</string>
