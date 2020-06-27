@@ -21,6 +21,12 @@ Display building/room info on drawer side panel
 
 <img src="https://user-images.githubusercontent.com/32232680/85930198-4b27c680-b86f-11ea-9cea-e04440ebcdb7.jpg" width="250"/>
 
+Show user location relative to location of interest. In the future, can add in paths and a directions feature that guides the user directly to location of interest 
+
+<img src="https://user-images.githubusercontent.com/32232680/85930201-4d8a2080-b86f-11ea-91ae-16dc41673f75.jpg" width="250"/>
+
+<img src="https://user-images.githubusercontent.com/32232680/85930202-4e22b700-b86f-11ea-8e18-757654fc3911.jpg" width="250"/>
+
 SFU burnaby restaurant showing list of restaurant, in the future if possible, restaurants can be stored on server and refresh function can be added to update any changes to include newly added restaurants and renovation
 
 <img src="https://user-images.githubusercontent.com/32232680/85930199-4bc05d00-b86f-11ea-9ab5-268c21388f69.jpg" width="250"/>
@@ -29,11 +35,6 @@ Details of restaurant and rating feature. In the future rating will be done as P
 
 <img src="https://user-images.githubusercontent.com/32232680/85930200-4c58f380-b86f-11ea-8713-aa20fef2c3fd.jpg" width="250"/>
 
-Show user location relative to location of interest. In the future, can add in paths and a directions feature that guides the user directly to location of interest 
-
-<img src="https://user-images.githubusercontent.com/32232680/85930201-4d8a2080-b86f-11ea-91ae-16dc41673f75.jpg" width="250"/>
-
-<img src="https://user-images.githubusercontent.com/32232680/85930202-4e22b700-b86f-11ea-8e18-757654fc3911.jpg" width="250"/>
 
 # REFERENCES
 
