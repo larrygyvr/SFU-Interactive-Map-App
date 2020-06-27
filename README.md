@@ -19,4 +19,4 @@ Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to 
 Recycler List View Adapted from https://github.com/ismealdi/list-grid-view-android
 MapView Search Dialog Adapted from https://github.com/mirrajabi/search-dialog
 
-<img src="https://user-images.githubusercontent.com/32232680/85932070-e031bc00-b87d-11ea-8cff-758fb8565a31.jpg" alt="Your image title" width="250"/>
+<img src="https://user-images.githubusercontent.com/32232680/85932070-e031bc00-b87d-11ea-8cff-758fb8565a31.jpg" width="250"/>
