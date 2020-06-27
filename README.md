@@ -18,3 +18,4 @@ HomePage fade in fade out design showing SFU buildings around campus:
 Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to members associated with the development of SFU Snap Mobile
 Recycler List View Adapted from https://github.com/ismealdi/list-grid-view-android
 MapView Search Dialog Adapted from https://github.com/mirrajabi/search-dialog
+![Screenshot_2020-06-26-15-11-48-776_com example sfu_interactive_map](https://user-images.githubusercontent.com/32232680/85931999-4cf88680-b87d-11ea-8cc9-fa864ac20f9a.jpg = 50x50)
