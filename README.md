@@ -27,6 +27,12 @@ Show user location relative to location of interest. In the future, can add in p
 
 <img src="https://user-images.githubusercontent.com/32232680/85930202-4e22b700-b86f-11ea-8e18-757654fc3911.jpg" width="250"/>
 
+User customizable marker
+
+<img src="https://user-images.githubusercontent.com/32232680/85932808-533e3100-b884-11ea-9eb2-28bda39e7d2a.jpg" width="250"/>
+
+<img src="https://user-images.githubusercontent.com/32232680/85932815-67822e00-b884-11ea-9860-17e35b8ee94b.jpg" width="250"/>
+
 SFU burnaby restaurant showing list of restaurant, in the future if possible, restaurants can be stored on server and refresh function can be added to update any changes to include newly added restaurants and renovation
 
 <img src="https://user-images.githubusercontent.com/32232680/85930199-4bc05d00-b86f-11ea-9ab5-268c21388f69.jpg" width="250"/>
