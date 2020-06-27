@@ -38,5 +38,7 @@ Show user location relative to location of interest. In the future, can add in p
 # REFERENCES
 
 Restaurant descriptions are taking from the SFU Snap Mobile App. All credits to members associated with the development of SFU Snap Mobile
+
 Recycler List View Adapted from https://github.com/ismealdi/list-grid-view-android
+
 MapView Search Dialog Adapted from https://github.com/mirrajabi/search-dialog
