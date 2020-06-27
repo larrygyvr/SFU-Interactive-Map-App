@@ -89,7 +89,7 @@
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="@string/leadership"
+                android:text="@string/taste"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_menu_sub"
                 fontPath="fonts/latoRegular.ttf"
