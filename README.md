@@ -3,14 +3,22 @@ A sfu interactive app developed for newcomers of SFU to learn more about the cam
 
 Short Demo of App:
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/32232680/85930172-056afe00-b86f-11ea-9b63-3415220c92d5.gif)
+
 HomePage fade in fade out design showing SFU buildings around campus:
 <img src="https://user-images.githubusercontent.com/32232680/85930192-43682200-b86f-11ea-8220-3c82b2c6e30c.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930194-46fba900-b86f-11ea-9252-f7a4a1c2a815.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930196-495e0300-b86f-11ea-859a-5bf55970ad0d.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930198-4b27c680-b86f-11ea-9cea-e04440ebcdb7.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930199-4bc05d00-b86f-11ea-9ab5-268c21388f69.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930200-4c58f380-b86f-11ea-8713-aa20fef2c3fd.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930201-4d8a2080-b86f-11ea-91ae-16dc41673f75.jpg" width="250"/>
+
 <img src="https://user-images.githubusercontent.com/32232680/85930202-4e22b700-b86f-11ea-8e18-757654fc3911.jpg" width="250"/>
 
 # REFERENCES
