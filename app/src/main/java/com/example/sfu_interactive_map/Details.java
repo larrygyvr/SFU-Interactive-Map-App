@@ -36,6 +36,7 @@ public class Details extends AppCompatActivity {
     TextView title;
     TextView about;
     TextView description;
+    TextView location;
     TextView contact;
     TextView hours[];
     ImageView photo;
@@ -87,6 +88,7 @@ public class Details extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         about = (TextView)findViewById(R.id.about);
         description= (TextView)findViewById(R.id.description);
+        location = (TextView)findViewById(R.id.location);
         contact = (TextView)findViewById(R.id.contact);
         hours[0] = (TextView)findViewById(R.id.monday);
         hours[1] = (TextView)findViewById(R.id.tuesday);
@@ -105,6 +107,7 @@ public class Details extends AppCompatActivity {
         title.setText("Details");
         about.setText(data.getStringExtra("name"));
         description.setText(data.getStringExtra("description"));
+        location.setText(data.getStringExtra("location"));
         contact.setText(data.getStringExtra("contact"));
         hours[0].setText(data.getStringArrayListExtra("hours").get(0));
         hours[1].setText(data.getStringArrayListExtra("hours").get(1));

@@ -59,6 +59,7 @@ public class PlacesListViewAdapter extends RecyclerView.Adapter<PlacesListViewAd
         intent.putExtra("in", "ls");
         intent.putExtra("name", place.getName());
         intent.putExtra("description", place.getDescription());
+        intent.putExtra("location",place.getAddress());
         intent.putExtra("photo", place.getPhoto());
         intent.putExtra("contact", place.getContact());
         intent.putStringArrayListExtra("hours", (ArrayList<String>) place.getHours());

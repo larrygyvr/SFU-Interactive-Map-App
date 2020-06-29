@@ -113,6 +113,44 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".38"
                         android:layout_gravity="center"
+                        android:text="Location"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/detail_sub"
+                        fontPath="fonts/latoBold.ttf"
+                        tools:ignore="MissingPrefix"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/two_dot"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/detail_sub"
+                        fontPath="fonts/latoBold.ttf"
+                        tools:ignore="MissingPrefix"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin_small"/>
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:layout_gravity="center"
+                        android:text="Location"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/detail_sub"
+                        fontPath="fonts/latoRegular.ttf"
+                        tools:ignore="MissingPrefix"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/activity_horizontal_margin_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".38"
+                        android:layout_gravity="center"
                         android:text="Contact"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/detail_sub"
